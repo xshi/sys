@@ -184,6 +184,13 @@ _doc(){
 
 complete -F _doc doc 
 
+
+et() {
+    echo "Recursively generating TAGS for *.cc *.h *.py ..."
+    find . -name "*.cc" -print -or -name "*.h" -print  -or -name "*.py" -print | xargs etags
+}
+
+
 ki() {
     if [ -z "$1" ]; then
 	echo "lepp (l) , fnal (f), cern (c) ?"

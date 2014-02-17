@@ -345,22 +345,30 @@ setsys() {
 
 sl() {
     if [ -z "$1" ]; then
-	echo "[c]   lxplus.cern.ch"
-	echo "[c5]  lxplus5.cern.ch"
-	echo "[f5]  cmslpc-sl5.fnal.gov"
-	echo "[l]   lnx235.lns.cornell.edu"
-	echo "[n]   ntucms1.cern.ch"
-	echo "[n2]  ntucms2.cern.ch"
-	echo "[np]  pixel_dev@ntucms1.cern.ch"
-	echo "[tb]  pixel_dev@pcpixeltb.cern.ch"
-	echo "[ps]  pixel_dev@pcp028047.psi.ch"
-	echo "[tn]  ssh xshi@lxplus5.cern.ch -L 10080:ntucms1.cern.ch:80 -N"
+	echo "[bohr]    bohr.physics.purdue.edu"
+	echo "[clyde]   clyde.physics.purdue.edu"
+	echo "[c]       lxplus.cern.ch"
+	echo "[c5]      lxplus5.cern.ch"
+	echo "[f5]      cmslpc-sl5.fnal.gov"
+	echo "[l]       lnx235.lns.cornell.edu"
+	echo "[n]       ntucms1.cern.ch"
+	echo "[n2]      ntucms2.cern.ch"
+	echo "[np]      pixel_dev@ntucms1.cern.ch"
+	echo "[tb]      pixel_dev@pcpixeltb.cern.ch"
+	echo "[ps]      pixel_dev@pcp028047.psi.ch"
+	echo "[tn]      ssh xshi@lxplus5.cern.ch -L 10080:ntucms1.cern.ch:80 -N"
 	read menu 
     else
 	menu=$1
     fi
 
     case $menu in 
+	bohr) ssh -Y shi210@bohr.physics.purdue.edu 
+	    ;;
+	
+	clyde) ssh -Y shi210@clyde.physics.purdue.edu 
+	    ;;
+	
 	c) ssh -Y xshi@lxplus.cern.ch
 	    ;;
 	c5) ssh -Y xshi@lxplus5.cern.ch

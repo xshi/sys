@@ -347,6 +347,7 @@ sl() {
     if [ -z "$1" ]; then
 	echo "[bohr]    bohr.physics.purdue.edu"
 	echo "[clyde]   clyde.physics.purdue.edu"
+	echo "[rcac]    cms.rcac.purdue.edu"
 	echo "[c]       lxplus.cern.ch"
 	echo "[c5]      lxplus5.cern.ch"
 	echo "[f5]      cmslpc-sl5.fnal.gov"

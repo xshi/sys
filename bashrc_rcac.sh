@@ -103,17 +103,6 @@ ki() {
     fi; 
 }
 
-
-
-setgrid() {
-    echo -ne "Setting GRID ...\r"
-    source /afs/cern.ch/cms/LCG/LCG-2/UI/cms_ui_env.sh
-    source /afs/cern.ch/cms/ccs/wm/scripts/Crab/crab.sh 
-    #voms-proxy-init --voms cms
-    echo "Setting GRID ... done."
-}
-
-
 sethbb() {
     echo -ne "Setting hbb ...\r"
     export hbb=$HOME/work/cms/hbb

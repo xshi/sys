@@ -28,8 +28,8 @@ alias lsd="l -d */"
 alias en="emacs -nw"
 alias ec="emacsclient"
 alias p="pwd"
-alias cl="rm *~; rm *.orig"
 alias rl="root -l" 
+alias rm~="rm *~"
 
 #--------------------------------------------------
 # Functions 

@@ -16,6 +16,7 @@ export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export CVSEDITOR=vim
 export PATH=$HOME/local/bin:$PATH
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH #for MacPorts
 export LESS='-R'
 export LESSOPEN='|~/.sys/lessfilter.sh %s' 
 
@@ -30,6 +31,8 @@ alias ec="emacsclient"
 alias p="pwd"
 alias rl="root -l" 
 alias rm~="rm *~"
+
+. ~/local/share/root/bin/thisroot.sh 
 
 #--------------------------------------------------
 # Functions 
@@ -478,13 +481,4 @@ function tabname {
 function winname {
   printf "\e]2;$1\a"
 }
-
-
-##
-# Your previous /Users/xshi/.bash_profile file was backed up as /Users/xshi/.bash_profile.macports-saved_2014-02-18_at_07:36:36
-##
-
-# MacPorts Installer addition on 2014-02-18_at_07:36:36: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
 

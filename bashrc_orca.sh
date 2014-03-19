@@ -367,6 +367,10 @@ sl() {
 	menu=$1
     fi
 
+    export sl_etna=purduepix@etna.physics.purdue.edu
+    export sl_rcac=shi210@cms.rcac.purdue.edu 
+    export sl_c5=xshi@lxplus5.cern.ch
+
     case $menu in 
 	bohr) ssh -Y shi210@bohr.physics.purdue.edu 
 	    ;;
@@ -375,11 +379,9 @@ sl() {
 	    ;;
 
 	etna) ssh -Y purduepix@etna.physics.purdue.edu 
-	    export sl_etna=purduepix@etna.physics.purdue.edu
 	    ;;
 
 	rcac) ssh -Y shi210@cms.rcac.purdue.edu 
-	    export sl_rcac=shi210@cms.rcac.purdue.edu 
 	    ;;
 	
 	c) ssh -Y xshi@lxplus.cern.ch

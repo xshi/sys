@@ -64,3 +64,16 @@
   (dolist (charset '(kana han symbol cjk-misc bopomofo)) 
     (set-fontset-font (frame-parameter nil 'font) charset 
                       (font-spec :family (car (cdr fonts)))))) 
+
+;-----------------------------------------------------------
+; Org LaTeX 
+;-----------------------------------------------------------
+(require 'org-latex)
+(add-to-list 'org-export-latex-classes
+             '("cjk"
+               "\\documentclass{article}
+               [NO-DEFAULT-PACKAGES]
+               [EXTRA]"
+	       ("\\section{%s}" . "\\section*{%s}")
+	       ("\\subsection{%s}" . "\\subsection*{%s}")
+	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))

@@ -351,7 +351,8 @@ sl() {
 	echo "[bohr]    bohr.physics.purdue.edu"
 	echo "[clyde]   clyde.physics.purdue.edu"
 	echo "[etna]    etna.physics.purdue.edu"
-	echo "[rcac]    cms.rcac.purdue.edu"
+	echo "[rcac]    hep.rcac.purdue.edu"
+	echo "[rcac5]   cms.rcac.purdue.edu"
 	echo "[c]       lxplus.cern.ch"
 	echo "[c5]      lxplus5.cern.ch"
 	echo "[f5]      cmslpc-sl5.fnal.gov"
@@ -368,7 +369,8 @@ sl() {
     fi
 
     export sl_etna=purduepix@etna.physics.purdue.edu
-    export sl_rcac=shi210@cms.rcac.purdue.edu 
+    export sl_rcac=shi210@hep.rcac.purdue.edu 
+    export sl_rcac5=shi210@cms.rcac.purdue.edu 
     export sl_c5=xshi@lxplus5.cern.ch
 
     case $menu in 
@@ -381,7 +383,10 @@ sl() {
 	etna) ssh -Y purduepix@etna.physics.purdue.edu 
 	    ;;
 
-	rcac) ssh -Y shi210@cms.rcac.purdue.edu 
+	rcac) ssh -Y shi210@hep.rcac.purdue.edu 
+	    ;;
+
+	rcac5) ssh -Y shi210@cms.rcac.purdue.edu 
 	    ;;
 	
 	c) ssh -Y xshi@lxplus.cern.ch

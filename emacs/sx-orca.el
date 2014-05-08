@@ -68,12 +68,12 @@
 ;-----------------------------------------------------------
 ; Org LaTeX 
 ;-----------------------------------------------------------
-(require 'org-latex)
-(add-to-list 'org-export-latex-classes
-             '("cjk"
-               "\\documentclass{article}
-               [NO-DEFAULT-PACKAGES]
-               [EXTRA]"
-	       ("\\section{%s}" . "\\section*{%s}")
-	       ("\\subsection{%s}" . "\\subsection*{%s}")
-	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
+;; (require 'org-latex)
+;; (add-to-list 'org-export-latex-classes
+;;              '("cjk"
+;;                "\\documentclass{article}
+;;                [NO-DEFAULT-PACKAGES]
+;;                [EXTRA]"
+;; 	       ("\\section{%s}" . "\\section*{%s}")
+;; 	       ("\\subsection{%s}" . "\\subsection*{%s}")
+;; 	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))

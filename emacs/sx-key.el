@@ -104,3 +104,14 @@ shown, then it'll be hidden."
              (outline-minor-mode 1)
              (define-context-key outline-minor-mode-map
                (kbd "TAB") (when (th-outline-context-p) 'org-cycle))))
+
+
+;;-----------------------------------------------------------
+;; helm-minor-mode
+;;-----------------------------------------------------------
+(add-hook 'helm-mode-hook
+	  (lambda ()
+	    (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
+	    (define-key helm-map (kbd "C-z") 'helm-select-action)
+	    ))
+

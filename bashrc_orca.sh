@@ -412,6 +412,25 @@ sl() {
     esac
 }
 
+
+syn() {
+    if [ -z "$1" ]; then
+	echo "[1]  etna:cmspxl/dat ==> orca4"
+	echo "[2]  orca4:cmspxl/dat ==> etna"
+	read menu 
+    else
+	menu=$1
+    fi
+
+    case $menu in 
+	1) rsync -a purduepix@etna.physics.purdue.edu:~/cmspxl/dat/ ~/work/cms/pxl/cmspxl/dat/
+	   ;;
+	2) rsync -a ~/work/cms/pxl/cmspxl/dat/ purduepix@etna.physics.purdue.edu:~/cmspxl/dat/ 
+	   ;;
+    esac
+}
+
+
 fet() {
     pwd=$PWD
     echo "fetch .org? (y/N)"

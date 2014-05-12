@@ -40,25 +40,19 @@ alias rm~="rm *~"
 
 bak(){
    if [ -z "$1" ]; then
-       echo "AFS(a), Documents(d), Ocean(o), Pictures(p), Movies(v) ?"
-   elif [ "$1" = "a" ]; then
-       cd $HOME/bak
-       hg ci -m "ready to backup"
-       hg push 
-       cd $HOME/work/cms/afb/doc
-       hg ci -m "ready to backup"
-       hg push
+       echo "Documents(d), Ocean(o), Pictures(p), Movies(v) ?"
 
    elif [ "$1" = "d" ]; then
-       rsync -avuE $HOME/Documents $backup 
+       rsync -avuE -P $HOME/Documents $backup 
 
    elif [ "$1" = "o" ]; then
-       rsync -avuE /Volumes/Ocean/ /Volumes/Ocean2/
+       rsync -avuE -P /Volumes/Ocean/ /Volumes/Ocean2/
 
    elif [ "$1" = "p" ]; then
-       rsync -avuE /Users/xshi/Library/Application\ Support/Google/Picasa3 /Volumes/Ocean/Library/Application\ Support/Google/
+       rsync -avuE -P /Users/xshi/Library/Application\ Support/Google/Picasa3 /Volumes/Ocean/Library/Application\ Support/Google/
+
    elif [ "$1" = "v" ]; then
-       rsync -avuE $HOME/Movies $backup 
+       rsync -avuE -P $HOME/Movies $backup 
    fi;
 }
 
@@ -423,9 +417,9 @@ syn() {
     fi
 
     case $menu in 
-	1) rsync -a purduepix@etna.physics.purdue.edu:~/cmspxl/dat/ ~/work/cms/pxl/cmspxl/dat/
+	1) rsync -a -P purduepix@etna.physics.purdue.edu:~/cmspxl/dat/ ~/work/cms/pxl/cmspxl/dat/
 	   ;;
-	2) rsync -a ~/work/cms/pxl/cmspxl/dat/ purduepix@etna.physics.purdue.edu:~/cmspxl/dat/ 
+	2) rsync -a -P ~/work/cms/pxl/cmspxl/dat/ purduepix@etna.physics.purdue.edu:~/cmspxl/dat/ 
 	   ;;
     esac
 }

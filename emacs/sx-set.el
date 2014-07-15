@@ -97,8 +97,10 @@
 ; (setq org-directory "~/.org/")
 
 (setq org-default-notes-file "~/.org/notes.org")
+
 (setq org-agenda-files (quote ("~/.org/life.org"
-			       "~/.org/work.org" )))
+			       "~/.org/work.org"
+			       "~/.org/todo.org" )))
 
 (setq org-capture-templates (quote (("t" "Todo" entry (file "~/.org/todo.org") ""))))
 
@@ -130,8 +132,8 @@
 (add-hook 'org-mode-hook
 	  '(lambda ()
 	     ;(define-key org-mode-map "\C-cl" 'org-store-link)
-	     (define-key org-mode-map "\C-cn" 'org-next-link)
-	     (define-key org-mode-map "\C-cp" 'org-previous-link)
+	     ;(define-key org-mode-map "\C-cn" 'org-next-link)
+	     ;(define-key org-mode-map "\C-cp" 'org-previous-link)
 	     (define-key org-mode-map "\M-p" 'outline-previous-visible-heading)
 	     (define-key org-mode-map "\M-n" 'outline-next-visible-heading)
 	     ;;(define-key org-mode-map "\C-ccc" 'sx-comment-region-with-colon)

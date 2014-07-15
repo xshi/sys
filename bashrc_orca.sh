@@ -32,7 +32,7 @@ alias p="pwd"
 alias rl="root -l" 
 alias rm~="rm *~"
 
-. ~/local/share/root/bin/thisroot.sh 
+. ~/local/share/root/bin/thisroot.sh
 
 #--------------------------------------------------
 # Functions 
@@ -311,11 +311,16 @@ setdhad() {
 setpxl() {
     echo -ne "Setting pxl ...\r"
 
-    export pxl=$HOME/work/cms/pxl
-    export src=$pxl/src
-    export psi=$pxl/src/psi46expert
-    export doc=$pxl/doc
-    export fig=$pxl/doc/fig
+    # export pxl=$HOME/work/cms/pxl
+    # export src=$pxl/src
+    # export psi=$pxl/src/psi46expert
+    # export doc=$pxl/doc
+    # export fig=$pxl/doc/fig
+
+    pwd=$PWD
+    cd ~/work/cms/pxl/cmspxl
+    . setup.sh
+    cd $pwd
 
     echo "Setting pxl ... done."
 }

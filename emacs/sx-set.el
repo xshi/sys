@@ -94,10 +94,14 @@
 (setq org-export-copy-to-kill-ring nil)
 (setq org-export-kill-product-buffer-when-displayed t)
 
-(setq org-directory "~/.org/")
-(setq org-default-notes-file (concat org-directory "notes.org"))
+; (setq org-directory "~/.org/")
+
+(setq org-default-notes-file "~/.org/notes.org")
 (setq org-agenda-files (quote ("~/.org/life.org"
 			       "~/.org/work.org" )))
+
+(setq org-capture-templates (quote (("t" "Todo" entry (file "~/.org/todo.org") ""))))
+
 (setq org-columns-default-format 
       "%40ITEM %5Effort(Estimate){:} %5CLOCKSUM(Clocked) %10TODO(State)")
 
@@ -130,7 +134,7 @@
 	     (define-key org-mode-map "\C-cp" 'org-previous-link)
 	     (define-key org-mode-map "\M-p" 'outline-previous-visible-heading)
 	     (define-key org-mode-map "\M-n" 'outline-next-visible-heading)
-	     (define-key org-mode-map "\C-ccc" 'sx-comment-region-with-colon)
+	     ;;(define-key org-mode-map "\C-ccc" 'sx-comment-region-with-colon)
 	     (define-key org-mode-map "\C-c\C-x\C-s" 'save-buffer)
 	     (define-key org-mode-map  (kbd "<C-tab>") 'switch-to-prev-buffer)
 	     (visual-line-mode 1) 

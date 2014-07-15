@@ -7,7 +7,8 @@
 (global-set-key (quote [67108907]) (quote redo))
 
 (global-set-key "\C-ca"   'sx-agenda-day-view)
-(global-set-key "\C-cA"   'sx-org-revert-agenda-buffers)
+; (global-set-key "\C-cA"   'sx-org-revert-agenda-buffers)
+
 (global-set-key "\C-ccr"  'comment-region)
 
 (global-set-key "\C-ce"   'sx-edit)
@@ -17,7 +18,8 @@
 (global-set-key "\C-cl"   'org-store-link)
 
 (global-set-key "\C-cmdl" 'sx-make-directory-log)
-; (global-set-key "\C-co"   'sx-open)
+
+(global-set-key "\C-cp"   'org-capture)
 (global-set-key "\C-cq"   'quick-calc)
 (global-set-key "\C-crb"  'sx-revert-buffer)
 

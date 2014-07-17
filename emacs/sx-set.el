@@ -4,13 +4,16 @@
 (setq global-font-lock-mode t)
 (show-paren-mode t)
 (setq show-paren-style 'mixed)
-(setq transient-mark-mode t)
+;;(setq transient-mark-mode t) ;; default after 24 
 
 (setq dired-listing-switches "-lh")
 
+;; Typing override text selection
+(delete-selection-mode 1) 
+
 ;; Fix junk characters in shell mode
-(add-hook 'shell-mode-hook
-	  'ansi-color-for-comint-mode-on)
+;; (add-hook 'shell-mode-hook
+;; 	  'ansi-color-for-comint-mode-on)
 
 ;; tramp 
 (setq tramp-auto-save-directory "~/.emacs.d/tramp-autosave") 
@@ -20,8 +23,6 @@
   (custom-set-faces
    '(org-hide ((nil (:foreground "black"))))))
 
-;; Emacs 23
-(delete-selection-mode 1) ; make typing override text selection
 
 ;-----------------------------------------------------------
 ;  Frequently used Mode 
@@ -89,7 +90,7 @@
 (setq org-support-shift-select t)
 (setq org-hide-leading-stars t) 
 (setq org-clock-into-drawer t)
-(setq org-log-into-drawer t)
+;(setq org-log-into-drawer t)
 (setq org-return-follows-link t)
 (setq org-export-copy-to-kill-ring nil)
 (setq org-export-kill-product-buffer-when-displayed t)
@@ -119,14 +120,14 @@
 
 ;; (setq org-clock-modeline-total (quote current))
 
-(defun org-mode-reftex-setup ()
-  (load-library "reftex")
-  (and (buffer-file-name)
-       (file-exists-p (buffer-file-name))
-       (reftex-parse-all))
-  (define-key org-mode-map (kbd "C-c )") 'reftex-citation))
+;; (defun org-mode-reftex-setup ()
+;;   (load-library "reftex")
+;;   (and (buffer-file-name)
+;;        (file-exists-p (buffer-file-name))
+;;        (reftex-parse-all))
+;;   (define-key org-mode-map (kbd "C-c )") 'reftex-citation))
 
-(add-hook 'org-mode-hook 'org-mode-reftex-setup)
+;; (add-hook 'org-mode-hook 'org-mode-reftex-setup)
 
 
 (add-hook 'org-mode-hook
@@ -299,16 +300,14 @@
 ;-----------------------------------------------------------
 ; Jedi
 ;-----------------------------------------------------------
-(setq jedi:setup-keys t)
-(autoload 'jedi:setup "jedi" nil t)
-;; (add-hook 'python-mode-hook 'jedi:setup)
+;; (setq jedi:setup-keys t)
+;; (autoload 'jedi:setup "jedi" nil t)
+;; ;; (add-hook 'python-mode-hook 'jedi:setup)
 
-(add-hook 'jedi-mode-hook
-	  '(lambda ()
-	     (define-key jedi-mode-map  (kbd "<C-tab>") 'switch-to-prev-buffer)
-	     ))
-
-
+;; (add-hook 'jedi-mode-hook
+;; 	  '(lambda ()
+;; 	     (define-key jedi-mode-map  (kbd "<C-tab>") 'switch-to-prev-buffer)
+;; 	     ))
 
 ;;-----------------------------------------------------------
 ;; Load Packages

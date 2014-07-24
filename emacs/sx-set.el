@@ -100,10 +100,16 @@
 (setq org-default-notes-file "~/.org/notes.org")
 
 (setq org-agenda-files (quote ("~/.org/life.org"
-			       "~/.org/work.org"
-			       "~/.org/todo.org" )))
+			       "~/.org/work.org")))
+;; "~/.org/todo.org" )))
 
-(setq org-capture-templates (quote (("t" "Todo" entry (file "~/.org/todo.org") ""))))
+;; (setq org-capture-templates (quote (("t" "Todo" entry (file "~/.org/todo.org") ""))))
+
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/.org/work.org" "Tasks")
+	 "* TODO %?\n  %i\n  %a")
+        ("j" "Journal" entry (file+datetree "~/.org/journal.org")
+	 "* %?\nEntered on %U\n  %i\n  %a")))
 
 (setq org-columns-default-format 
       "%40ITEM %5Effort(Estimate){:} %5CLOCKSUM(Clocked) %10TODO(State)")

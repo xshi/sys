@@ -370,6 +370,7 @@ sl() {
     export sl_etna=purduepix@etna.physics.purdue.edu
     export sl_rcac=shi210@hep.rcac.purdue.edu 
     export sl_rcac5=shi210@cms.rcac.purdue.edu 
+    export sl_c=xshi@lxplus.cern.ch
     export sl_c5=xshi@lxplus5.cern.ch
 
     case $menu in 

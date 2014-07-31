@@ -354,6 +354,7 @@ sl() {
 	echo "[rcac5]   cms.rcac.purdue.edu"
 	echo "[c]       lxplus.cern.ch"
 	echo "[c5]      lxplus5.cern.ch"
+	echo "[f]       cmslpc-sl6.fnal.gov"
 	echo "[f5]      cmslpc-sl5.fnal.gov"
 	echo "[l]       lnx235.lns.cornell.edu"
 	echo "[n]       ntucms1.cern.ch"
@@ -392,6 +393,8 @@ sl() {
 	c) ssh -Y xshi@lxplus.cern.ch
 	    ;;
 	c5) ssh -Y xshi@lxplus5.cern.ch
+	    ;;
+	f) ssh -Y xshi@cmslpc-sl6.fnal.gov
 	    ;;
 	f5) ssh -Y xshi@cmslpc-sl5.fnal.gov
 	    ;;

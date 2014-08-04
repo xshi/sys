@@ -27,9 +27,9 @@
 ;-----------------------------------------------------------
 ;  Frequently used Mode 
 ;-----------------------------------------------------------
-;; (require 'ido)
-;; (ido-mode t)
-;; (setq org-completion-use-ido t)
+(require 'ido)
+(ido-mode t)
+(setq org-completion-use-ido t)
 
 (desktop-save-mode 1)
 

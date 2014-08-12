@@ -373,6 +373,7 @@ sl() {
     export sl_rcac5=shi210@cms.rcac.purdue.edu 
     export sl_c=xshi@lxplus.cern.ch
     export sl_c5=xshi@lxplus5.cern.ch
+    export sl_l=xs32@lnx235.lns.cornell.edu
 
     case $menu in 
 	bohr) ssh -Y shi210@bohr.physics.purdue.edu 

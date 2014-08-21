@@ -351,6 +351,7 @@ sl() {
     # echo "[tb]      pixel_dev@pcpixeltb.cern.ch"
     # echo "[ps]      pixel_dev@pcp028047.psi.ch"
     # echo "[tn]      ssh xshi@lxplus5.cern.ch -L 10080:ntucms1.cern.ch:80 -N"
+    # cat ~/.ssh/id_dsa.pub | ssh user@remote.com 'cat >> ~/.ssh/authorized_keys'
 
     hostnames=(bohr cern clyd etna fnal kaut lepp rcac)
     

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 #--------------------------------------------------
 # Prompt Setting
@@ -346,74 +346,43 @@ setsys() {
 
 
 sl() {
+    # echo "[ntu]     ntucms1.cern.ch"
+    # echo "[np]      pixel_dev@ntucms1.cern.ch"
+    # echo "[tb]      pixel_dev@pcpixeltb.cern.ch"
+    # echo "[ps]      pixel_dev@pcp028047.psi.ch"
+    # echo "[tn]      ssh xshi@lxplus5.cern.ch -L 10080:ntucms1.cern.ch:80 -N"
+
+    hostnames=(bohr cern clyd etna fnal kaut lepp rcac)
+    
+    export bohr=shi210@bohr.physics.purdue.edu
+    export cern=xshi@lxplus.cern.ch
+    export clyd=shi210@clyde.physics.purdue.edu
+    export etna=purduepix@etna.physics.purdue.edu
+    export fnal=xshi@cmslpc-sl6.fnal.gov
+    export kaut=xshi@kautzky.physics.purdue.edu
+    export lepp=xs32@lnx235.lepp.cornell.edu
+    export rcac=shi210@hep.rcac.purdue.edu
+
     if [ -z "$1" ]; then
-	echo "[bohr]    bohr.physics.purdue.edu"
-	echo "[clyde]   clyde.physics.purdue.edu"
-	echo "[etna]    etna.physics.purdue.edu"
-	echo "[rcac]    hep.rcac.purdue.edu"
-	echo "[rcac5]   cms.rcac.purdue.edu"
-	echo "[c]       lxplus.cern.ch"
-	echo "[c5]      lxplus5.cern.ch"
-	echo "[f]       cmslpc-sl6.fnal.gov"
-	echo "[f5]      cmslpc-sl5.fnal.gov"
-	echo "[l]       lnx235.lns.cornell.edu"
-	echo "[n]       ntucms1.cern.ch"
-	echo "[n2]      ntucms2.cern.ch"
-	echo "[np]      pixel_dev@ntucms1.cern.ch"
-	echo "[tb]      pixel_dev@pcpixeltb.cern.ch"
-	echo "[ps]      pixel_dev@pcp028047.psi.ch"
-	echo "[tn]      ssh xshi@lxplus5.cern.ch -L 10080:ntucms1.cern.ch:80 -N"
-	read menu 
+        for hostname in ${hostnames[*]}
+	do
+	    subst="$hostname"
+            echo "    ["$hostname"]" ${!subst}
+	done
+   	read menu 
     else
-	menu=$1
+    	menu=$1
     fi
-
-    export sl_etna=purduepix@etna.physics.purdue.edu
-    export sl_rcac=shi210@hep.rcac.purdue.edu 
-    export sl_rcac5=shi210@cms.rcac.purdue.edu 
-    export sl_c=xshi@lxplus.cern.ch
-    export sl_c5=xshi@lxplus5.cern.ch
-    export sl_l=xs32@lnx235.lns.cornell.edu
-
-    case $menu in 
-	bohr) ssh -Y shi210@bohr.physics.purdue.edu 
-	    ;;
-	
-	clyde) ssh -Y shi210@clyde.physics.purdue.edu 
-	    ;;
-
-	etna) ssh -Y purduepix@etna.physics.purdue.edu 
-	    ;;
-
-	rcac) ssh -Y shi210@hep.rcac.purdue.edu 
-	    ;;
-
-	rcac5) ssh -Y shi210@cms.rcac.purdue.edu 
-	    ;;
-	
-	c) ssh -Y xshi@lxplus.cern.ch
-	    ;;
-	c5) ssh -Y xshi@lxplus5.cern.ch
-	    ;;
-	f) ssh -Y xshi@cmslpc-sl6.fnal.gov
-	    ;;
-	f5) ssh -Y xshi@cmslpc-sl5.fnal.gov
-	    ;;
-	l) ssh -Y xs32@lnx235.lns.cornell.edu
-	    ;; 
-	n) ssh -Y xshi@ntucms1.cern.ch
-	    ;;
-	n2) ssh -Y xshi@ntucms2.cern.ch
-	    ;;
-	np) ssh -Y pixel_dev@ntucms1.cern.ch
-	    ;;
-	tb) ssh -Y pixel_dev@pcpixeltb.cern.ch
-	    ;; 
-	ps) ssh -Y pixel_dev@pcp028047.psi.ch
-	    ;;
-	tn) ssh xshi@lxplus5.cern.ch -L 10080:ntucms1.cern.ch:80 -N 
-	    ;; 
-    esac
+    
+    for hostname in ${hostnames[*]}
+    do
+	subst="$hostname"
+	if [[ $menu == $hostname ]];
+	then
+	    echo "Logging into" ${!subst} "..." 
+	    ssh -Y ${!subst}
+	fi 
+    done
 }
 
 

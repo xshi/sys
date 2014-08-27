@@ -353,7 +353,7 @@ sl() {
     # echo "[tn]      ssh xshi@lxplus5.cern.ch -L 10080:ntucms1.cern.ch:80 -N"
     # cat ~/.ssh/id_dsa.pub | ssh user@remote.com 'cat >> ~/.ssh/authorized_keys'
 
-    hostnames=(bohr cern clyd etna fnal kaut lepp rcac)
+    hostnames=(bohr cern clyd eceg etna fnal kaut lepp rcac)
     
     export bohr=shi210@bohr.physics.purdue.edu
     export cern=xshi@lxplus.cern.ch

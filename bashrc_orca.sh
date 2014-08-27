@@ -358,7 +358,7 @@ sl() {
     export bohr=shi210@bohr.physics.purdue.edu
     export cern=xshi@lxplus.cern.ch
     export clyd=shi210@clyde.physics.purdue.edu
-    export eceg=shi210@ecegrid-thin1.ece.purdue.edu
+    export eceg=shi210@ecegrid.ece.purdue.edu
     export etna=purduepix@etna.physics.purdue.edu
     export fnal=xshi@cmslpc-sl6.fnal.gov
     export kaut=xshi@kautzky.physics.purdue.edu

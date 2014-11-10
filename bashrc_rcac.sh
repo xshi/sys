@@ -34,15 +34,15 @@ export PATH=$HOME/local/bin:$PATH
 export LESS='-R'
 export LESSOPEN='|~/.sys/lessfilter.sh %s' 
 unset SSH_ASKPASS  
-
+#export DISPLAY=hep.rcac.purdue.edu:0.0 
 
 #--------------------------------------------------
 # Settings for CMS 
 #--------------------------------------------------
 source /cvmfs/cms.cern.ch/cmsset_default.sh
-source /grp/cms/tools/glite/setup.sh 
-source /grp/cms/crab/crab.sh 
-
+#source /grp/cms/tools/glite/setup.sh 
+#source /grp/cms/crab/crab.sh 
+alias voi='voms-proxy-init -voms cms -valid 168:0'
 
 #--------------------------------------------------
 # Functions 

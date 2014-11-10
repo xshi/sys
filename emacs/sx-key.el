@@ -7,24 +7,25 @@
 (global-set-key (quote [67108907]) (quote redo))
 
 (global-set-key "\C-ca"   'sx-agenda-day-view)
-(global-set-key "\C-cA"   'sx-org-revert-agenda-buffers)
+; (global-set-key "\C-cA"   'sx-org-revert-agenda-buffers)
+
 (global-set-key "\C-ccr"  'comment-region)
 
 (global-set-key "\C-ce"   'sx-edit)
 (global-set-key "\C-cd"   'sx-delete)
 
 (global-set-key "\C-ci"   'sx-insert)
+(global-set-key "\C-ck"   'org-capture)
 (global-set-key "\C-cl"   'org-store-link)
 
-(global-set-key "\C-cmdl" 'sx-make-directory-log)
-; (global-set-key "\C-co"   'sx-open)
+; (global-set-key "\C-cmdl" 'sx-make-directory-log)
+
 (global-set-key "\C-cq"   'quick-calc)
 (global-set-key "\C-crb"  'sx-revert-buffer)
 
 (global-set-key "\C-ct"   'sx-multi-term)
 (global-set-key "\C-cuc"  'uncomment-region)
 (global-set-key "\C-cx"   'sx-execute)
-
 
 (global-set-key (kbd "<C-tab>")   'switch-to-prev-buffer)
 (global-set-key (kbd "<C-S-tab>") 'switch-to-next-buffer)
@@ -58,7 +59,6 @@
 
 (global-set-key (kbd "C-c 0")  (lambda () (interactive) (point-to-register ?0))) 
 (global-set-key (kbd "C-0")  (lambda () (interactive) (jump-to-register ?0))) 
-
 
 (global-unset-key  (kbd "C-z") )
 
@@ -104,3 +104,14 @@ shown, then it'll be hidden."
              (outline-minor-mode 1)
              (define-context-key outline-minor-mode-map
                (kbd "TAB") (when (th-outline-context-p) 'org-cycle))))
+
+
+;;-----------------------------------------------------------
+;; helm-minor-mode
+;;-----------------------------------------------------------
+(add-hook 'helm-mode-hook
+	  (lambda ()
+	    (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
+	    (define-key helm-map (kbd "C-z") 'helm-select-action)
+	    ))
+

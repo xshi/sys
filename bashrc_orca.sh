@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 #--------------------------------------------------
 # Prompt Setting
@@ -16,6 +16,7 @@ export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export CVSEDITOR=vim
 export PATH=$HOME/local/bin:$PATH
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH #for MacPorts
 export LESS='-R'
 export LESSOPEN='|~/.sys/lessfilter.sh %s' 
 
@@ -28,8 +29,10 @@ alias lsd="l -d */"
 alias en="emacs -nw"
 alias ec="emacsclient"
 alias p="pwd"
-alias cl="rm *~; rm *.orig"
 alias rl="root -l" 
+alias rm~="rm *~"
+
+. ~/local/share/root/bin/thisroot.sh
 
 #--------------------------------------------------
 # Functions 
@@ -37,25 +40,19 @@ alias rl="root -l"
 
 bak(){
    if [ -z "$1" ]; then
-       echo "AFS(a), Documents(d), Ocean(o), Pictures(p), Movies(v) ?"
-   elif [ "$1" = "a" ]; then
-       cd $HOME/bak
-       hg ci -m "ready to backup"
-       hg push 
-       cd $HOME/work/cms/afb/doc
-       hg ci -m "ready to backup"
-       hg push
+       echo "Documents(d), Ocean(o), Pictures(p), Movies(v) ?"
 
    elif [ "$1" = "d" ]; then
-       rsync -avuE $HOME/Documents $backup 
+       rsync -avuE -P $HOME/Documents $backup 
 
    elif [ "$1" = "o" ]; then
-       rsync -avuE /Volumes/Ocean/ /Volumes/Ocean2/
+       rsync -avuE -P /Volumes/Ocean/ /Volumes/Ocean2/
 
    elif [ "$1" = "p" ]; then
-       rsync -avuE /Users/xshi/Library/Application\ Support/Google/Picasa3 /Volumes/Ocean/Library/Application\ Support/Google/
+       rsync -avuE -P /Users/xshi/Library/Application\ Support/Google/Picasa3 /Volumes/Ocean/Library/Application\ Support/Google/
+
    elif [ "$1" = "v" ]; then
-       rsync -avuE $HOME/Movies $backup 
+       rsync -avuE -P $HOME/Movies $backup 
    fi;
 }
 
@@ -314,11 +311,16 @@ setdhad() {
 setpxl() {
     echo -ne "Setting pxl ...\r"
 
-    export pxl=$HOME/work/cms/pxl
-    export src=$pxl/src
-    export psi=$pxl/src/psi46expert
-    export doc=$pxl/doc
-    export fig=$pxl/doc/fig
+    # export pxl=$HOME/work/cms/pxl
+    # export src=$pxl/src
+    # export psi=$pxl/src/psi46expert
+    # export doc=$pxl/doc
+    # export fig=$pxl/doc/fig
+
+    pwd=$PWD
+    cd ~/work/cms/pxl/cmspxl
+    . setup.sh
+    cd $pwd
 
     echo "Setting pxl ... done."
 }
@@ -344,57 +346,64 @@ setsys() {
 
 
 sl() {
+    # echo "[ntu]     ntucms1.cern.ch"
+    # echo "[np]      pixel_dev@ntucms1.cern.ch"
+    # echo "[tb]      pixel_dev@pcpixeltb.cern.ch"
+    # echo "[ps]      pixel_dev@pcp028047.psi.ch"
+    # echo "[tn]      ssh xshi@lxplus5.cern.ch -L 10080:ntucms1.cern.ch:80 -N"
+    # cat ~/.ssh/id_dsa.pub | ssh user@remote.com 'cat >> ~/.ssh/authorized_keys'
+
+    hostnames=(bohr cern clyd etna fnal kaut lepp rcac)
+    
+    export bohr=shi210@bohr.physics.purdue.edu
+    export cern=xshi@lxplus.cern.ch
+    export clyd=shi210@clyde.physics.purdue.edu
+    export etna=purduepix@etna.physics.purdue.edu
+    export fnal=xshi@cmslpc-sl6.fnal.gov
+    export kaut=xshi@kautzky.physics.purdue.edu
+    export lepp=xs32@lnx235.lepp.cornell.edu
+    export rcac=shi210@hep.rcac.purdue.edu
+
     if [ -z "$1" ]; then
-	echo "[bohr]    bohr.physics.purdue.edu"
-	echo "[clyde]   clyde.physics.purdue.edu"
-	echo "[rcac]    cms.rcac.purdue.edu"
-	echo "[c]       lxplus.cern.ch"
-	echo "[c5]      lxplus5.cern.ch"
-	echo "[f5]      cmslpc-sl5.fnal.gov"
-	echo "[l]       lnx235.lns.cornell.edu"
-	echo "[n]       ntucms1.cern.ch"
-	echo "[n2]      ntucms2.cern.ch"
-	echo "[np]      pixel_dev@ntucms1.cern.ch"
-	echo "[tb]      pixel_dev@pcpixeltb.cern.ch"
-	echo "[ps]      pixel_dev@pcp028047.psi.ch"
-	echo "[tn]      ssh xshi@lxplus5.cern.ch -L 10080:ntucms1.cern.ch:80 -N"
+        for hostname in ${hostnames[*]}
+	do
+	    subst="$hostname"
+            echo "    ["$hostname"]" ${!subst}
+	done
+   	read menu 
+    else
+    	menu=$1
+    fi
+    
+    for hostname in ${hostnames[*]}
+    do
+	subst="$hostname"
+	if [[ $menu == $hostname ]];
+	then
+	    echo "Logging into" ${!subst} "..." 
+	    ssh -Y ${!subst}
+	fi 
+    done
+}
+
+
+syn() {
+    if [ -z "$1" ]; then
+	echo "[1]  etna:cmspxl/dat ==> orca4"
+	echo "[2]  orca4:cmspxl/dat ==> etna"
 	read menu 
     else
 	menu=$1
     fi
 
     case $menu in 
-	bohr) ssh -Y shi210@bohr.physics.purdue.edu 
-	    ;;
-	
-	clyde) ssh -Y shi210@clyde.physics.purdue.edu 
-	    ;;
-
-	rcac) ssh -Y shi210@cms.rcac.purdue.edu 
-	    ;;
-	
-	c) ssh -Y xshi@lxplus.cern.ch
-	    ;;
-	c5) ssh -Y xshi@lxplus5.cern.ch
-	    ;;
-	f5) ssh -Y xshi@cmslpc-sl5.fnal.gov
-	    ;;
-	l) ssh -Y xs32@lnx235.lns.cornell.edu
-	    ;; 
-	n) ssh -Y xshi@ntucms1.cern.ch
-	    ;;
-	n2) ssh -Y xshi@ntucms2.cern.ch
-	    ;;
-	np) ssh -Y pixel_dev@ntucms1.cern.ch
-	    ;;
-	tb) ssh -Y pixel_dev@pcpixeltb.cern.ch
-	    ;; 
-	ps) ssh -Y pixel_dev@pcp028047.psi.ch
-	    ;;
-	tn) ssh xshi@lxplus5.cern.ch -L 10080:ntucms1.cern.ch:80 -N 
-	    ;; 
+	1) rsync -a -P purduepix@etna.physics.purdue.edu:~/cmspxl/dat/ ~/work/cms/pxl/cmspxl/dat/
+	   ;;
+	2) rsync -a -P ~/work/cms/pxl/cmspxl/dat/ purduepix@etna.physics.purdue.edu:~/cmspxl/dat/ 
+	   ;;
     esac
 }
+
 
 fet() {
     pwd=$PWD
@@ -474,13 +483,4 @@ function tabname {
 function winname {
   printf "\e]2;$1\a"
 }
-
-
-##
-# Your previous /Users/xshi/.bash_profile file was backed up as /Users/xshi/.bash_profile.macports-saved_2014-02-18_at_07:36:36
-##
-
-# MacPorts Installer addition on 2014-02-18_at_07:36:36: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
 

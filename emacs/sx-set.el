@@ -4,13 +4,16 @@
 (setq global-font-lock-mode t)
 (show-paren-mode t)
 (setq show-paren-style 'mixed)
-(setq transient-mark-mode t)
+;;(setq transient-mark-mode t) ;; default after 24 
 
 (setq dired-listing-switches "-lh")
 
+;; Typing override text selection
+(delete-selection-mode 1) 
+
 ;; Fix junk characters in shell mode
-(add-hook 'shell-mode-hook
-	  'ansi-color-for-comint-mode-on)
+;; (add-hook 'shell-mode-hook
+;; 	  'ansi-color-for-comint-mode-on)
 
 ;; tramp 
 (setq tramp-auto-save-directory "~/.emacs.d/tramp-autosave") 
@@ -20,15 +23,13 @@
   (custom-set-faces
    '(org-hide ((nil (:foreground "black"))))))
 
-;; Emacs 23
-(delete-selection-mode 1) ; make typing override text selection
 
 ;-----------------------------------------------------------
 ;  Frequently used Mode 
 ;-----------------------------------------------------------
-;; (require 'ido)
-;; (ido-mode t)
-;; (setq org-completion-use-ido t)
+(require 'ido)
+(ido-mode t)
+(setq org-completion-use-ido t)
 
 (desktop-save-mode 1)
 
@@ -89,15 +90,27 @@
 (setq org-support-shift-select t)
 (setq org-hide-leading-stars t) 
 (setq org-clock-into-drawer t)
-(setq org-log-into-drawer t)
+;(setq org-log-into-drawer t)
 (setq org-return-follows-link t)
 (setq org-export-copy-to-kill-ring nil)
 (setq org-export-kill-product-buffer-when-displayed t)
 
-(setq org-directory "~/.org/")
-(setq org-default-notes-file (concat org-directory "notes.org"))
+; (setq org-directory "~/.org/")
+
+(setq org-default-notes-file "~/.org/notes.org")
+
 (setq org-agenda-files (quote ("~/.org/life.org"
-			       "~/.org/work.org" )))
+			       "~/.org/work.org")))
+;; "~/.org/todo.org" )))
+
+;; (setq org-capture-templates (quote (("t" "Todo" entry (file "~/.org/todo.org") ""))))
+
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/.org/work.org" "Tasks")
+	 "* TODO %?\n  %i\n  %a")
+        ("j" "Journal" entry (file+datetree "~/.org/journal.org")
+	 "* %?\nEntered on %U\n  %i\n  %a")))
+
 (setq org-columns-default-format 
       "%40ITEM %5Effort(Estimate){:} %5CLOCKSUM(Clocked) %10TODO(State)")
 
@@ -113,24 +126,24 @@
 
 ;; (setq org-clock-modeline-total (quote current))
 
-(defun org-mode-reftex-setup ()
-  (load-library "reftex")
-  (and (buffer-file-name)
-       (file-exists-p (buffer-file-name))
-       (reftex-parse-all))
-  (define-key org-mode-map (kbd "C-c )") 'reftex-citation))
+;; (defun org-mode-reftex-setup ()
+;;   (load-library "reftex")
+;;   (and (buffer-file-name)
+;;        (file-exists-p (buffer-file-name))
+;;        (reftex-parse-all))
+;;   (define-key org-mode-map (kbd "C-c )") 'reftex-citation))
 
-(add-hook 'org-mode-hook 'org-mode-reftex-setup)
+;; (add-hook 'org-mode-hook 'org-mode-reftex-setup)
 
 
 (add-hook 'org-mode-hook
 	  '(lambda ()
 	     ;(define-key org-mode-map "\C-cl" 'org-store-link)
-	     (define-key org-mode-map "\C-cn" 'org-next-link)
-	     (define-key org-mode-map "\C-cp" 'org-previous-link)
+	     ;(define-key org-mode-map "\C-cn" 'org-next-link)
+	     ;(define-key org-mode-map "\C-cp" 'org-previous-link)
 	     (define-key org-mode-map "\M-p" 'outline-previous-visible-heading)
 	     (define-key org-mode-map "\M-n" 'outline-next-visible-heading)
-	     (define-key org-mode-map "\C-ccc" 'sx-comment-region-with-colon)
+	     ;;(define-key org-mode-map "\C-ccc" 'sx-comment-region-with-colon)
 	     (define-key org-mode-map "\C-c\C-x\C-s" 'save-buffer)
 	     (define-key org-mode-map  (kbd "<C-tab>") 'switch-to-prev-buffer)
 	     (visual-line-mode 1) 
@@ -293,16 +306,14 @@
 ;-----------------------------------------------------------
 ; Jedi
 ;-----------------------------------------------------------
-(setq jedi:setup-keys t)
-(autoload 'jedi:setup "jedi" nil t)
-;; (add-hook 'python-mode-hook 'jedi:setup)
+;; (setq jedi:setup-keys t)
+;; (autoload 'jedi:setup "jedi" nil t)
+;; ;; (add-hook 'python-mode-hook 'jedi:setup)
 
-(add-hook 'jedi-mode-hook
-	  '(lambda ()
-	     (define-key jedi-mode-map  (kbd "<C-tab>") 'switch-to-prev-buffer)
-	     ))
-
-
+;; (add-hook 'jedi-mode-hook
+;; 	  '(lambda ()
+;; 	     (define-key jedi-mode-map  (kbd "<C-tab>") 'switch-to-prev-buffer)
+;; 	     ))
 
 ;;-----------------------------------------------------------
 ;; Load Packages

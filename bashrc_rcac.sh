@@ -73,3 +73,12 @@ sethbb() {
     echo "Setting hbb ... done."
 }
 
+clsrm() {
+    for f in `ls -l | awk '{printf("%s ", $9)}'`;
+    do
+	echo $f;
+	#srmrm srm://srm.rcac.purdue.edu:8443/srm/v2/server?SFN=/mnt/hadoop/store/user/xshi/SinglePhoton/SinglePhoton_Run2012B/fe25c1cf989d0c6844ee0d2acac09f98/$f;
+	#echo $(pwd)/$f 
+	srmrm srm://srm.rcac.purdue.edu:8443/srm/v2/server?SFN=$(pwd)/$f;
+    done
+}

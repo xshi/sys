@@ -233,22 +233,6 @@ setafb() {
     export rafb="xshi@lxplus.cern.ch:~/work/cms/afb"
     export wafb="xshi@lxplus.cern.ch:~/www/afb"
 
-    # if [ -z "$1" ]; then
-    # 	echo "[1]  v1"
-    # 	echo "[2]  v2"
-    # 	read menu 
-    # else
-    # 	menu=$1
-    # fi
-
-    # case $menu in 
-    # 	1)  code_tag="v1"
-    # 	    ;;
-    # 	2)  code_tag="v2"
-    # 	    ;;
-    # esac
-    # export rel=$afb/rel/BToKstarMuMu_$code_tag
-
     export src=$afb/src/BToKstarMuMu
     export plugins=$src/plugins
     export run=$src/python 
@@ -256,16 +240,6 @@ setafb() {
     alias sel_sync="rsync -av $rafb/dat/sel/ $afb/dat/sel/" 
 
     echo "Setting afb ... done."
-}
-
-
-setdas() {
-    echo -ne "Setting das ...\r"
-    setroot 
-    export CVS_RSH=ssh
-    export CVSROOT=xshi@cmscvs.cern.ch:/cvs_server/repositories/CMSSW
-    export das=$HOME/work/cms/das/2012
-    echo "Setting das ... done."
 }
 
 
@@ -310,13 +284,6 @@ setdhad() {
 
 setpxl() {
     echo -ne "Setting pxl ...\r"
-
-    # export pxl=$HOME/work/cms/pxl
-    # export src=$pxl/src
-    # export psi=$pxl/src/psi46expert
-    # export doc=$pxl/doc
-    # export fig=$pxl/doc/fig
-
     pwd=$PWD
     cd ~/work/cms/pxl/cmspxl
     . setup.sh
@@ -326,10 +293,10 @@ setpxl() {
 }
 
 
-setroot() {
-    echo -ne "Setting ROOT ...\r"
-    . ~/local/share/root/bin/thisroot.sh 
-    echo "Setting ROOT ... done."
+setroot5() {
+    echo -ne "Setting ROOT5 ...\r"
+    . ~/local/share/root5/bin/thisroot.sh 
+    echo "Setting ROOT5 ... done."
 }
 
 
@@ -340,7 +307,6 @@ setsys() {
     cp ~/.sys/ssh_config ~/.ssh/config 
     cp ~/.sys/dot_hgrc ~/.hgrc
     #cp ~/bak/emacs/sx-ini.el ~/.emacs.d/init.el 
-
     echo "Setting system ... done."
 }
 
@@ -358,7 +324,7 @@ sl() {
     export bohr=shi210@bohr.physics.purdue.edu
     export cern=xshi@lxplus.cern.ch
     export clyd=shi210@clyde.physics.purdue.edu
-    export eceg=shi210@ecegrid.ece.purdue.edu
+    export eceg=shi210@ecegrid.ecn.purdue.edu
     export etna=purduepix@etna.physics.purdue.edu
     export fnal=xshi@cmslpc-sl6.fnal.gov
     export kaut=xshi@kautzky.physics.purdue.edu
@@ -405,78 +371,6 @@ syn() {
 	   ;;
     esac
 }
-
-
-fet() {
-    pwd=$PWD
-    echo "fetch .org? (y/N)"
-    read a
-    if [ "$a" = "y" ]; then
-	cd ~/.org && hg fetch
-    fi 
-
-    echo "fetch .sys? (y/N)"
-    read a
-    if [ "$a" = "y" ]; then
-	cd ~/.sys && hg fetch
-    fi 
-
-    echo "fetch .emacs.d? (y/N)"
-    read a
-    if [ "$a" = "y" ]; then
-	cd ~/.emacs.d && hg fetch
-    fi 
-
-    cd $pwd 
-}
-
-
-fo() {
-    pwd=$PWD
-    echo "fetching .org..."
-    cd ~/.org && hg fetch
-    cd $pwd 
-}
-
-
-po(){
-    pwd=$PWD
-    echo "pushing .org..."
-    cd ~/.org 
-    hg ci -m "g" --subrepos
-    hg push
-    cd $pwd 
-}
-
-pus() {
-    pwd=$PWD
-    echo "push .org? (y/N)"
-    read a
-    if [ "$a" = "y" ]; then
-	cd ~/.org 
-	hg ci -m "g" --subrepos
-	hg push
-    fi 
-
-    echo "push .sys? (y/N)"
-    read a
-    if [ "$a" = "y" ]; then
-	cd ~/.sys 
-	hg ci -m "g"
-	hg push
-    fi 
-
-    echo "push .emacs.d? (y/N)"
-    read a
-    if [ "$a" = "y" ]; then
-	cd ~/.emacs.d 
-	hg ci -m "g"
-	hg push
-    fi 
-
-    cd $pwd 
-}
-
 
 function tabname {
   printf "\e]1;$1\a"

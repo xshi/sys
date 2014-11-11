@@ -40,9 +40,7 @@ unset SSH_ASKPASS
 # Settings for CMS 
 #--------------------------------------------------
 source /cvmfs/cms.cern.ch/cmsset_default.sh
-#source /grp/cms/tools/glite/setup.sh 
-#source /grp/cms/crab/crab.sh 
-alias voi='voms-proxy-init -voms cms -valid 168:0'
+
 
 #--------------------------------------------------
 # Functions 
@@ -51,7 +49,6 @@ alias voi='voms-proxy-init -voms cms -valid 168:0'
 batch_kill() {
     pgrep $1 | awk '{print  "kill -9 "$1}' | sh  
 }
-
 
 ki() {
     if [ -z "$1" ]; then
@@ -63,22 +60,30 @@ ki() {
     fi; 
 }
 
-sethbb() {
-    echo -ne "Setting hbb ...\r"
-    export hbb=$HOME/work/cms/hbb
-    export rel=$hbb/rel/CMSSW_5_3_9/src
-    cd $rel ;  eval `scram runtime -sh` 
-    export build=$rel/HbbAna/BprimeTobH
-    export test=$build/test 
-    echo "Setting hbb ... done."
+setgrid() {
+    echo -ne "Setting grid ...\r"
+    source /grp/cms/tools/glite/setup.sh 
+    source /grp/cms/crab/crab.sh
+    alias voi='voms-proxy-init -voms cms -valid 168:0'
+    alias vof='voms-proxy-info'
+    echo "Enabled voi and vof."
+    echo "Setting grid ... done."
 }
 
 clsrm() {
-    for f in `ls -l | awk '{printf("%s ", $9)}'`;
-    do
-	echo $f;
-	#srmrm srm://srm.rcac.purdue.edu:8443/srm/v2/server?SFN=/mnt/hadoop/store/user/xshi/SinglePhoton/SinglePhoton_Run2012B/fe25c1cf989d0c6844ee0d2acac09f98/$f;
-	#echo $(pwd)/$f 
-	srmrm srm://srm.rcac.purdue.edu:8443/srm/v2/server?SFN=$(pwd)/$f;
-    done
+    if [ -z "$1" ]; then
+	echo "Clearning up ALL files in the current directory? [N/y] ?"
+	read a 
+	if [ "$a" = "y" ]; then
+	    for f in `ls -l | awk '{printf("%s ", $9)}'`;
+	    do
+		echo $f;
+		srmrm srm://srm.rcac.purdue.edu:8443/srm/v2/server?SFN=$(pwd)/$f;
+	    done
+	fi;
+    else
+	echo "Removing empty dir " $(pwd)/$1 "..."
+	srmrmdir srm://srm.rcac.purdue.edu:8443/srm/v2/server?SFN=$(pwd)/$1	
+    fi;
 }
+

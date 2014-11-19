@@ -64,9 +64,9 @@ setgrid() {
     echo -ne "Setting grid ...\r"
     source /grp/cms/tools/glite/setup.sh 
     source /grp/cms/crab/crab.sh
-    alias voi='voms-proxy-init -voms cms -valid 168:0'
-    alias vof='voms-proxy-info'
-    echo "Enabled voi and vof."
+    alias voc='voms-proxy-init -voms cms -valid 168:0'
+    alias voi='voms-proxy-info'
+    echo "Enabled voc and voi."
     echo "Setting grid ... done."
 }
 

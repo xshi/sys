@@ -24,6 +24,8 @@ alias rl="root -l"
 alias screen='TERM=screen screen' # remove the Wuff!
 alias sr='screen -r' 
 
+alias voc='voms-proxy-init -voms cms -valid 168:0'
+alias voi='voms-proxy-info'
 
 #--------------------------------------------------
 # General ENV
@@ -64,9 +66,9 @@ setgrid() {
     echo -ne "Setting grid ...\r"
     source /grp/cms/tools/glite/setup.sh 
     source /grp/cms/crab/crab.sh
-    alias voc='voms-proxy-init -voms cms -valid 168:0'
-    alias voi='voms-proxy-info'
-    echo "Enabled voc and voi."
+#    alias voc='voms-proxy-init -voms cms -valid 168:0'
+#    alias voi='voms-proxy-info'
+#    echo "Enabled voc and voi."
     echo "Setting grid ... done."
 }
 

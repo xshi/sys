@@ -24,9 +24,6 @@ alias rl="root -l"
 alias screen='TERM=screen screen' # remove the Wuff!
 alias sr='screen -r' 
 
-alias voc='voms-proxy-init -voms cms -valid 168:0'
-alias voi='voms-proxy-info'
-
 #--------------------------------------------------
 # General ENV
 #--------------------------------------------------
@@ -43,6 +40,11 @@ unset SSH_ASKPASS
 #--------------------------------------------------
 source /cvmfs/cms.cern.ch/cmsset_default.sh
 
+alias setgrid='source /grp/cms/tools/glite/setup.sh'
+alias voc='voms-proxy-init -voms cms -valid 168:0'
+alias voi='voms-proxy-info'
+alias setcrab='source /grp/cms/crab/crab.sh'
+alias setcrab3='source /cvmfs/cms.cern.ch/crab3/crab.sh'
 
 #--------------------------------------------------
 # Functions 
@@ -62,15 +64,15 @@ ki() {
     fi; 
 }
 
-setgrid() {
-    echo -ne "Setting grid ...\r"
-    source /grp/cms/tools/glite/setup.sh 
-    source /grp/cms/crab/crab.sh
-#    alias voc='voms-proxy-init -voms cms -valid 168:0'
-#    alias voi='voms-proxy-info'
-#    echo "Enabled voc and voi."
-    echo "Setting grid ... done."
-}
+# setgrid() {
+#     echo -ne "Setting grid ...\r"
+#     source /grp/cms/tools/glite/setup.sh 
+#     source /grp/cms/crab/crab.sh
+# #    alias voc='voms-proxy-init -voms cms -valid 168:0'
+# #    alias voi='voms-proxy-info'
+# #    echo "Enabled voc and voi."
+#     echo "Setting grid ... done."
+# }
 
 clsrm() {
     if [ -z "$1" ]; then

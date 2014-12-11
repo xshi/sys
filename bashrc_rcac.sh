@@ -43,8 +43,8 @@ source /cvmfs/cms.cern.ch/cmsset_default.sh
 alias setgrid='source /grp/cms/tools/glite/setup.sh'
 alias voc='voms-proxy-init -voms cms -valid 168:0'
 alias voi='voms-proxy-info'
-alias setcrab='source /grp/cms/crab/crab.sh'
-alias setcrab3='source /cvmfs/cms.cern.ch/crab3/crab.sh'
+alias setcrab2='source /grp/cms/crab/crab.sh'
+alias setcrab='source /cvmfs/cms.cern.ch/crab3/crab.sh'
 
 #--------------------------------------------------
 # Functions 

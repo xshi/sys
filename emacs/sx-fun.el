@@ -27,15 +27,35 @@
 
 (defun sx-insert ()
   (interactive)
-  (message "Insert: [l]ink [o]rg [p]ython [t]ime " )
+  (message "Insert: [c]pp [l]ink [o]rg [p]ython [t]ime " )
   (let (r1)
     (setq r1 (read-char-exclusive))
     (cond 
+     ((eq r1 ?c)  (call-interactively 'sx-insert-cpp))
      ((eq r1 ?l)  (call-interactively 'sx-insert-link))
      ((eq r1 ?o)  (call-interactively 'sx-insert-org))
      ((eq r1 ?p)  (call-interactively 'sx-insert-python))
      ((eq r1 ?t)  (call-interactively 'sx-insert-time))
      )))
+
+;;-----------------------------------------------------------
+; Insert C++ 
+;;-----------------------------------------------------------
+
+(defun sx-insert-cpp ()
+  (interactive)
+  (message "Insert cpp: [p]rint" )
+  (let (r1)
+    (setq r1 (read-char-exclusive))
+    (cond 
+     ((eq r1 ?p)  (call-interactively 'sx-insert-cpp-print)))))
+
+(defun sx-insert-cpp-print ()
+   (interactive "*")
+   (insert "std::cout <<  << std::endl;")
+   (backward-char 14)
+   )
+
 
 ;;-----------------------------------------------------------
 ; Insert Python 

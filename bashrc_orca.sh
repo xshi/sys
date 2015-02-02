@@ -359,6 +359,7 @@ syn() {
     if [ -z "$1" ]; then
 	echo "[1]  etna:cmspxl/dat ==> orca4"
 	echo "[2]  orca4:cmspxl/dat ==> etna"
+	echo "[3]  rcac:hzz2l2nu/plots ==> orca4"
 	read menu 
     else
 	menu=$1
@@ -368,6 +369,8 @@ syn() {
 	1) rsync -a -P purduepix@etna.physics.purdue.edu:~/cmspxl/dat/ ~/work/cms/pxl/cmspxl/dat/
 	   ;;
 	2) rsync -a -P ~/work/cms/pxl/cmspxl/dat/ purduepix@etna.physics.purdue.edu:~/cmspxl/dat/ 
+	   ;;
+	3) rsync -a -P shi210@hep.rcac.purdue.edu:/home/shi210/cmssw/CMSSW_7_2_2/src/UserCode/llvv_fwk/test/phojet/plots/ ~/work/cms/hzz/miniaod/plots/
 	   ;;
     esac
 }

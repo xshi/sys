@@ -60,8 +60,9 @@ bak(){
 cmsdoc(){
    if [ -z "$1" ]; then
 	echo "[1] AN-12-066"
-	echo "[2] AN-12-119"
-	echo "[3] BPH-11-009"
+	echo "[2] AN-14-244"
+	echo "[3] AN-12-119"
+	echo "[4] BPH-11-009"
 	read menu 
     else
 	menu=$1
@@ -81,6 +82,9 @@ cmsdoc(){
 	1)  fname="AN-12-066"
 	    sty="an"
 	    ;;
+	4)  fname="AN-14-244"
+	    sty="an"
+	    ;; 
 	2)  fname="AN-12-119"
 	    sty="an"
 	    ;;

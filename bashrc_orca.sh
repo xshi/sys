@@ -87,7 +87,7 @@ cmsdoc(){
 	    sty="an"
 	    ;; 
 	3)  fname="DN-14-016"
-	    sty="an"
+	    sty="dn"
 	    ;;
 	4)  fname="AN-12-119"
 	    sty="an"

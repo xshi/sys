@@ -61,8 +61,9 @@ cmsdoc(){
    if [ -z "$1" ]; then
 	echo "[1] AN-12-066"
 	echo "[2] AN-14-244"
-	echo "[3] AN-12-119"
-	echo "[4] BPH-11-009"
+	echo "[3] DN-14-016"
+	echo "[4] AN-12-119"
+	echo "[5] BPH-11-009"
 	read menu 
     else
 	menu=$1
@@ -82,13 +83,16 @@ cmsdoc(){
 	1)  fname="AN-12-066"
 	    sty="an"
 	    ;;
-	4)  fname="AN-14-244"
+	2)  fname="AN-14-244"
 	    sty="an"
 	    ;; 
-	2)  fname="AN-12-119"
+	3)  fname="DN-14-016"
 	    sty="an"
 	    ;;
-	3)  fname="BPH-11-009"
+	4)  fname="AN-12-119"
+	    sty="an"
+	    ;;
+	5)  fname="BPH-11-009"
 	    sty="pas"
 	    ;;
 	*)  fname=$menu

@@ -58,47 +58,32 @@ bak(){
 
 
 cmsdoc(){
-   if [ -z "$1" ]; then
-	echo "[1] AN-12-066"
-	echo "[2] AN-14-244"
-	echo "[3] DN-14-016"
-	echo "[4] AN-12-119"
-	echo "[5] BPH-11-009"
-	read menu 
+    if [ -z "$1" ]; then
+	echo "Usage: cmsdoc style fname action"
+	echo "eg.: cmsdoc an AN-12-066 u"
+	echo "an, dn, pas ?"
+	read sty 
     else
-	menu=$1
+	sty=$1
     fi
- 
+
     if [ -z "$2" ]; then
+	echo "Input fname: "
+	echo "eg. : AN-12-066"
+	read fname 
+    else
+	fname=$2
+    fi
+    
+    if [ -z "$3" ]; then
 	echo "[b] build"
 	echo "[o] open"
 	echo "[s] share"
 	echo "[u] update"
 	read action 
     else
-	action=$2
+	action=$3
     fi
-    
-    case $menu in 
-	1)  fname="AN-12-066"
-	    sty="an"
-	    ;;
-	2)  fname="AN-14-244"
-	    sty="an"
-	    ;; 
-	3)  fname="DN-14-016"
-	    sty="dn"
-	    ;;
-	4)  fname="AN-12-119"
-	    sty="an"
-	    ;;
-	5)  fname="BPH-11-009"
-	    sty="pas"
-	    ;;
-	*)  fname=$menu
-	    sty="pas"
-	    ;;
-    esac
     
     pwd=$PWD
 

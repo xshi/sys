@@ -2,12 +2,12 @@
 ;  User Info
 ;-----------------------------------------------------------
 (setq user-full-name "Xin Shi")
-(setq user-mail-address "xshi@xshi.org")
+(setq user-mail-address "Xin.Shi@outlook.com")
 
 ;-----------------------------------------------------------
 ;  Frequently used Mode after the pack-list load 
 ;-----------------------------------------------------------
-;; (helm-mode 1) ;; not stable with tramp 
+;; (helm-mode 1) ;; not stable with tramp mode
 
 ;-----------------------------------------------------------
 ; Auto-Complete
@@ -65,15 +65,9 @@
     (set-fontset-font (frame-parameter nil 'font) charset 
                       (font-spec :family (car (cdr fonts)))))) 
 
+
 ;-----------------------------------------------------------
-; Org LaTeX 
+; JSON with python mode 
 ;-----------------------------------------------------------
-;; (require 'org-latex)
-;; (add-to-list 'org-export-latex-classes
-;;              '("cjk"
-;;                "\\documentclass{article}
-;;                [NO-DEFAULT-PACKAGES]
-;;                [EXTRA]"
-;; 	       ("\\section{%s}" . "\\section*{%s}")
-;; 	       ("\\subsection{%s}" . "\\subsection*{%s}")
-;; 	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
+(add-to-list 'auto-mode-alist '("\\.json$" . python-mode))
+

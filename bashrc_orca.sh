@@ -363,7 +363,7 @@ syn() {
 	   ;;
 	2) rsync -a -P ~/work/cms/pxl/cmspxl/dat/ purduepix@etna.physics.purdue.edu:~/cmspxl/dat/ 
 	   ;;
-	3) rsync -a -P shi210@hep.rcac.purdue.edu:/home/shi210/cmssw/CMSSW_7_2_2/src/UserCode/llvv_fwk/test/phojet/plots/ ~/work/cms/hzz/miniaod/plots/
+	3) rsync -a -P shi210@hep.rcac.purdue.edu:/home/shi210/cmssw/CMSSW_7_2_2/src/UserCode/llvv_fwk/test/phojet/plots/ ~/work/cms/hzz/2l2v_fwk/test/phojet/plots/
 	   ;;
     esac
 }

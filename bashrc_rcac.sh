@@ -91,3 +91,21 @@ clsrm() {
     fi;
 }
 
+
+lsHLT() {
+    if [ -z "$1" ]; then
+	printf "NAME\n\tlsHLT - list HLT menu\n"
+	return 
+    fi;
+    edmProvDump $1 | sed -n '/^Processing History/,/^----/p' | grep HLT 
+    #tmpline=`edmProvDump $1 | sed -n '/^Processing History/,/^----/p' | grep HLT `
+}
+
+lsTable() {
+    if [ -z "$1" ]; then
+	printf "NAME\n\tlsTable - list HLT tableName\n"
+	printf "EXAMPLE\n\tlsTable input.root -i 93287157e65f618f37e0483d88\n"
+	return 
+    fi;
+    edmProvDump $1 -i $2 | grep tableName
+}

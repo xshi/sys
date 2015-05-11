@@ -97,15 +97,8 @@ lsHLT() {
 	printf "NAME\n\tlsHLT - list HLT menu\n"
 	return 
     fi;
-    edmProvDump $1 | sed -n '/^Processing History/,/^----/p' | grep HLT 
-    #tmpline=`edmProvDump $1 | sed -n '/^Processing History/,/^----/p' | grep HLT `
+    #edmProvDump $1 | sed -n '/^Processing History/,/^----/p' | grep HLT 
+    str=`edmProvDump $1 | sed -n '/^Processing History/,/^----/p' | grep HLT | cut -d "(" -f2 | cut -d ")" -f1`
+    edmProvDump $1 -i $str | grep tableName 
 }
 
-lsTable() {
-    if [ -z "$1" ]; then
-	printf "NAME\n\tlsTable - list HLT tableName\n"
-	printf "EXAMPLE\n\tlsTable input.root -i 93287157e65f618f37e0483d88\n"
-	return 
-    fi;
-    edmProvDump $1 -i $2 | grep tableName
-}

@@ -33,7 +33,6 @@ export PATH=$HOME/local/bin:$PATH
 export LESS='-R'
 export LESSOPEN='|~/.sys/lessfilter.sh %s' 
 unset SSH_ASKPASS  
-#export DISPLAY=hep.rcac.purdue.edu:0.0 
 
 #--------------------------------------------------
 # Settings for CMS 
@@ -64,16 +63,6 @@ ki() {
     fi; 
 }
 
-# setgrid() {
-#     echo -ne "Setting grid ...\r"
-#     source /grp/cms/tools/glite/setup.sh 
-#     source /grp/cms/crab/crab.sh
-# #    alias voc='voms-proxy-init -voms cms -valid 168:0'
-# #    alias voi='voms-proxy-info'
-# #    echo "Enabled voc and voi."
-#     echo "Setting grid ... done."
-# }
-
 clsrm() {
     if [ -z "$1" ]; then
 	echo "Clearning up ALL files in the current directory? [N/y] ?"
@@ -91,13 +80,11 @@ clsrm() {
     fi;
 }
 
-
 lsHLT() {
     if [ -z "$1" ]; then
 	printf "NAME\n\tlsHLT - list HLT menu\n"
 	return 
     fi;
-    #edmProvDump $1 | sed -n '/^Processing History/,/^----/p' | grep HLT 
     str=`edmProvDump $1 | sed -n '/^Processing History/,/^----/p' | grep HLT | cut -d "(" -f2 | cut -d ")" -f1`
     edmProvDump $1 -i $str | grep tableName 
 }

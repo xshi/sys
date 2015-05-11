@@ -58,39 +58,32 @@ bak(){
 
 
 cmsdoc(){
-   if [ -z "$1" ]; then
-	echo "[1] AN-12-066"
-	echo "[2] AN-12-119"
-	echo "[3] BPH-11-009"
-	read menu 
+    if [ -z "$1" ]; then
+	echo "Usage: cmsdoc style fname action"
+	echo "eg.: cmsdoc an AN-12-066 u"
+	echo "an, dn, pas ?"
+	read sty 
     else
-	menu=$1
+	sty=$1
     fi
- 
+
     if [ -z "$2" ]; then
+	echo "Input fname: "
+	echo "eg. : AN-12-066"
+	read fname 
+    else
+	fname=$2
+    fi
+    
+    if [ -z "$3" ]; then
 	echo "[b] build"
 	echo "[o] open"
 	echo "[s] share"
 	echo "[u] update"
 	read action 
     else
-	action=$2
+	action=$3
     fi
-    
-    case $menu in 
-	1)  fname="AN-12-066"
-	    sty="an"
-	    ;;
-	2)  fname="AN-12-119"
-	    sty="an"
-	    ;;
-	3)  fname="BPH-11-009"
-	    sty="pas"
-	    ;;
-	*)  fname=$menu
-	    sty="pas"
-	    ;;
-    esac
     
     pwd=$PWD
 
@@ -359,6 +352,7 @@ syn() {
     if [ -z "$1" ]; then
 	echo "[1]  etna:cmspxl/dat ==> orca4"
 	echo "[2]  orca4:cmspxl/dat ==> etna"
+	echo "[3]  rcac:hzz2l2nu/plots ==> orca4"
 	read menu 
     else
 	menu=$1
@@ -368,6 +362,8 @@ syn() {
 	1) rsync -a -P purduepix@etna.physics.purdue.edu:~/cmspxl/dat/ ~/work/cms/pxl/cmspxl/dat/
 	   ;;
 	2) rsync -a -P ~/work/cms/pxl/cmspxl/dat/ purduepix@etna.physics.purdue.edu:~/cmspxl/dat/ 
+	   ;;
+	3) rsync -a -P shi210@hep.rcac.purdue.edu:/home/shi210/cmssw/CMSSW_7_2_2/src/UserCode/llvv_fwk/test/phojet/plots/ ~/work/cms/hzz/2l2v_fwk/test/phojet/plots/
 	   ;;
     esac
 }

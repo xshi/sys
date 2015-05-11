@@ -43,16 +43,17 @@ bak(){
        echo "Documents(d), Ocean(o), Pictures(p), Movies(v) ?"
 
    elif [ "$1" = "d" ]; then
-       rsync -avuE -P $HOME/Documents $backup 
+       rsync -avuE -P $HOME/Documents /Volumes/Ocean/Documents
 
    elif [ "$1" = "o" ]; then
        rsync -avuE -P /Volumes/Ocean/ /Volumes/Ocean2/
 
    elif [ "$1" = "p" ]; then
+       rsync -avuE -P $HOME/Pictures /Volumes/Ocean/Pictures
        rsync -avuE -P /Users/xshi/Library/Application\ Support/Google/Picasa3 /Volumes/Ocean/Library/Application\ Support/Google/
 
    elif [ "$1" = "v" ]; then
-       rsync -avuE -P $HOME/Movies $backup 
+       rsync -avuE -P $HOME/Movies /Volumes/Ocean/Movies
    fi;
 }
 

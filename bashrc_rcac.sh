@@ -59,7 +59,6 @@ clsrm() {
     fi
 
     if [ -d "$1" ]; then 
-	
  	echo "Clearning up ALL files in the dir $1. Are you sure? [N/y]"
 	read a 
 	if [ "$a" != "y" ]; then
@@ -76,8 +75,11 @@ clsrm() {
 	echo "Removing empty dir $1..."
 	srmrmdir srm://srm.rcac.purdue.edu:8443/srm/v2/server?SFN=$(pwd)/$1
     else
-	echo "Removing file $1 ..."
-	srmrm srm://srm.rcac.purdue.edu:8443/srm/v2/server?SFN=$(pwd)/$1;
+	for f in "$@"
+	do
+	    echo "Removing file $f ..."
+	    srmrm srm://srm.rcac.purdue.edu:8443/srm/v2/server?SFN=$(pwd)/$f;	    
+	done
     fi;
 }
 
@@ -90,6 +92,9 @@ lsHLT() {
     str=`edmProvDump $1 | sed -n '/^Processing History/,/^----/p' | grep HLT | cut -d "(" -f2 | cut -d ")" -f1`
     edmProvDump $1 -i $str | grep tableName 
 }
+
+
+
 
 
 

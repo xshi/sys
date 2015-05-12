@@ -54,7 +54,9 @@ batch_kill() {
 
 clsrm() {
     if [ -z "$1" ]; then
-	printf "NAME\n\tclsrm - Clear SRM files\n"
+	printf "NAME\n\tclsrm - Clear SRM files\n\n"
+	printf "EXAMPLE\n\tclsrm dir-to-be-removed/\n"
+	printf "\tclsrm *.root\n"
 	return 
     fi
 

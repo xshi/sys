@@ -5,11 +5,6 @@
 (setq user-mail-address "Xin.Shi@outlook.com")
 
 ;-----------------------------------------------------------
-;  Frequently used Mode after the pack-list load 
-;-----------------------------------------------------------
-;; (helm-mode 1) ;; not stable with tramp mode
-
-;-----------------------------------------------------------
 ; Auto-Complete
 ;-----------------------------------------------------------
 (require 'auto-complete-config)
@@ -36,15 +31,6 @@
 ; Aspell 
 ;-----------------------------------------------------------
 (setq ispell-program-name "aspell")
-
-;-----------------------------------------------------------
-; tramp fix 
-;-----------------------------------------------------------
-
-;; (tramp-compat-funcall
-;;  'buffer-substring-no-properties
-;;  (point-min)
-;;  (min (+ (point-min) tramp-echo-mark-marker-length) (point-max)))
 
 ;-----------------------------------------------------------
 ; Chinese font 

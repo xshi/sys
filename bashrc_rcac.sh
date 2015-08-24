@@ -39,7 +39,7 @@ unset SSH_ASKPASS
 #--------------------------------------------------
 source /cvmfs/cms.cern.ch/cmsset_default.sh
 
-alias setgrid='source /grp/cms/tools/glite/setup.sh'
+#alias setgrid='source /grp/cms/tools/glite/setup.sh'
 alias voc='voms-proxy-init -voms cms -valid 168:0'
 alias voi='voms-proxy-info'
 alias setcrab='source /cvmfs/cms.cern.ch/crab3/crab.sh'
@@ -91,7 +91,7 @@ lsHLT() {
 	printf "NAME\n\tlsHLT - list HLT menu\n"
 	return 
     fi;
-    str=`edmProvDump $1 | sed -n '/^Processing History/,/^----/p' | grep HLT | cut -d "(" -f2 | cut -d ")" -f1`
+    str=`edmProvDump $1 | sed -n '/^Processing History/,/^----/p' | grep HLT | cut -d$'\n' -f2 | cut -d "(" -f2 | cut -d ")" -f1`
     edmProvDump $1 -i $str | grep tableName 
 }
 

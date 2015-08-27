@@ -115,3 +115,11 @@ shown, then it'll be hidden."
 	    (define-key helm-map (kbd "C-z") 'helm-select-action)
 	    ))
 
+
+;-----------------------------------------------------------
+;; Semantic-mode
+;-----------------------------------------------------------
+(add-hook 'semantic-mode-hook '(lambda ()
+				 (global-semantic-mru-bookmark-mode t) 
+				 (global-set-key "\C-cj"   'semantic-ia-fast-jump)
+				 ))

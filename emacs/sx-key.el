@@ -122,4 +122,6 @@ shown, then it'll be hidden."
 (add-hook 'semantic-mode-hook '(lambda ()
 				 (global-semantic-mru-bookmark-mode t) 
 				 (global-set-key "\C-cj"   'semantic-ia-fast-jump)
+				 (global-set-key "\C-c-"   'senator-fold-tag)
+				 (global-set-key "\C-c+"   'senator-unfold-tag)
 				 ))

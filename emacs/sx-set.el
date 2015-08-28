@@ -4,16 +4,11 @@
 (setq global-font-lock-mode t)
 (show-paren-mode t)
 (setq show-paren-style 'mixed)
-;;(setq transient-mark-mode t) ;; default after 24 
 
 (setq dired-listing-switches "-lh")
 
 ;; Typing override text selection
 (delete-selection-mode 1) 
-
-;; Fix junk characters in shell mode
-;; (add-hook 'shell-mode-hook
-;; 	  'ansi-color-for-comint-mode-on)
 
 ;; tramp 
 (setq tramp-auto-save-directory "~/.emacs.d/tramp-autosave") 
@@ -43,7 +38,6 @@
 ; Bookmark File
 ;-----------------------------------------------------------
 (setq bookmark-save-flag 1)
-; (setq bookmark-default-file "~/.emacs.d/sx-orca.bmk") no need to sync in bmk 
 
 ;-----------------------------------------------------------
 ; Frames 
@@ -95,15 +89,9 @@
 (setq org-export-copy-to-kill-ring nil)
 (setq org-export-kill-product-buffer-when-displayed t)
 
-; (setq org-directory "~/.org/")
-
 (setq org-default-notes-file "~/.org/notes.org")
-
 (setq org-agenda-files (quote ("~/.org/life.org"
 			       "~/.org/work.org")))
-;; "~/.org/todo.org" )))
-
-;; (setq org-capture-templates (quote (("t" "Todo" entry (file "~/.org/todo.org") ""))))
 
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "~/.org/work.org" "Tasks")
@@ -124,32 +112,14 @@
 		   "<tr class=\"tr-odd\">"
 		 "<tr class=\"tr-even\">")) "</tr>"))
 
-;; (setq org-clock-modeline-total (quote current))
-
-;; (defun org-mode-reftex-setup ()
-;;   (load-library "reftex")
-;;   (and (buffer-file-name)
-;;        (file-exists-p (buffer-file-name))
-;;        (reftex-parse-all))
-;;   (define-key org-mode-map (kbd "C-c )") 'reftex-citation))
-
-;; (add-hook 'org-mode-hook 'org-mode-reftex-setup)
-
-
 (add-hook 'org-mode-hook
 	  '(lambda ()
-	     ;(define-key org-mode-map "\C-cl" 'org-store-link)
-	     ;(define-key org-mode-map "\C-cn" 'org-next-link)
-	     ;(define-key org-mode-map "\C-cp" 'org-previous-link)
 	     (define-key org-mode-map "\M-p" 'outline-previous-visible-heading)
 	     (define-key org-mode-map "\M-n" 'outline-next-visible-heading)
-	     ;;(define-key org-mode-map "\C-ccc" 'sx-comment-region-with-colon)
 	     (define-key org-mode-map "\C-c\C-x\C-s" 'save-buffer)
 	     (define-key org-mode-map  (kbd "<C-tab>") 'switch-to-prev-buffer)
 	     (visual-line-mode 1) 
-	     (auto-fill-mode 1) 
-	     ))
-
+	     (auto-fill-mode 1)))
 
 ;-----------------------------------------------------------
 ; Terminal
@@ -237,21 +207,6 @@
 
 
 ;-----------------------------------------------------------
-; Auto-Complete
-;-----------------------------------------------------------
-;(require 'auto-complete-config)
-;(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-;(ac-config-default)
-
-;-----------------------------------------------------------
-; Imenu 
-;-----------------------------------------------------------
-(defun try-to-add-imenu ()
-  (condition-case nil (imenu-add-to-menubar "Index") (error nil)))
-
-;;(add-hook 'font-lock-mode-hook 'try-to-add-imenu)
-
-;-----------------------------------------------------------
 ; Alternative visual bell
 ;-----------------------------------------------------------
 (defcustom echo-area-bell-string "*DING* " ;"♪"
@@ -303,29 +258,3 @@
 			 ("marmalade" . "http://marmalade-repo.org/packages/")
 			 ("melpa" . "http://melpa.milkbox.net/packages/")
 			 ))
-;-----------------------------------------------------------
-; Jedi
-;-----------------------------------------------------------
-;; (setq jedi:setup-keys t)
-;; (autoload 'jedi:setup "jedi" nil t)
-;; ;; (add-hook 'python-mode-hook 'jedi:setup)
-
-;; (add-hook 'jedi-mode-hook
-;; 	  '(lambda ()
-;; 	     (define-key jedi-mode-map  (kbd "<C-tab>") 'switch-to-prev-buffer)
-;; 	     ))
-
-;;-----------------------------------------------------------
-;; Load Packages
-;;-----------------------------------------------------------
-;; (load "sx-fun")
-;; (load "sx-key")
-
-;; (cond 
-;;  ((string-match "lns.cornell.edu" system-name) (load "sx-lepp"))
-;;  ((string-match "WHOLPHIN" system-name) (load "sx-wholphin"))
-;;  ((string-match "lxplus" system-name) (load "sx-cern"))
-;;  ((string-match "ntucms" system-name) (load "sx-cern"))
-;;  ((string-match "orca" system-name) (load "sx-orca")))
-
-

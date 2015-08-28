@@ -249,7 +249,7 @@
 (defun try-to-add-imenu ()
   (condition-case nil (imenu-add-to-menubar "Index") (error nil)))
 
-(add-hook 'font-lock-mode-hook 'try-to-add-imenu)
+;;(add-hook 'font-lock-mode-hook 'try-to-add-imenu)
 
 ;-----------------------------------------------------------
 ; Alternative visual bell

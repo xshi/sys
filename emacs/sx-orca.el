@@ -11,7 +11,9 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 
-(define-key ac-complete-mode-map (kbd "C-:") 'ac-complete-with-helm)
+; (define-key ac-complete-mode-map (kbd "C-:") 'ac-complete-with-helm)
+
+
 
 ;-----------------------------------------------------------
 ; CMake 

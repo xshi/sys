@@ -14,9 +14,9 @@
 (setq tramp-auto-save-directory "~/.emacs.d/tramp-autosave") 
 (setq password-cache-expiry nil)
 
-(if window-system nil
-  (custom-set-faces
-   '(org-hide ((nil (:foreground "black"))))))
+;; (if window-system nil
+;;   (custom-set-faces
+;;    '(org-hide ((nil (:foreground "black"))))))
 
 
 ;-----------------------------------------------------------
@@ -24,7 +24,7 @@
 ;-----------------------------------------------------------
 (require 'ido)
 (ido-mode t)
-(setq org-completion-use-ido t)
+;(setq org-completion-use-ido t)
 
 (desktop-save-mode 1)
 
@@ -66,60 +66,60 @@
 ;-----------------------------------------------------------
 ; (setq org-export-html-style-include-default nil)
 
-(setq org-todo-keyword-faces
-      '(
-	("STARTED"  . (:foreground "orange" :weight bold))
-	("WAITING"  . (:foreground "magenta" :weight bold))
-	("DRAFT"    . (:foreground "orange" :weight bold))
-	("REVISE"   . (:foreground "yellowgreen" :weight bold))
-	("EDIT"     . (:foreground "orange" :weight bold))
-	("REVIEW"   . (:foreground "blue" :weight bold))
-	("CANCELLED"  . (:foreground "snow4" :weight bold))
-	("DEFINED"  . (:foreground "orange" :weight bold))
-	("GEN"      . (:foreground "magenta" :weight bold))
-	("SUBMIT"   . (:foreground "yellowgreen" :weight bold))
-	("FAILED"   . (:foreground "snow4" :weight bold))
-	))
+;; (setq org-todo-keyword-faces
+;;       '(
+;; 	("STARTED"  . (:foreground "orange" :weight bold))
+;; 	("WAITING"  . (:foreground "magenta" :weight bold))
+;; 	("DRAFT"    . (:foreground "orange" :weight bold))
+;; 	("REVISE"   . (:foreground "yellowgreen" :weight bold))
+;; 	("EDIT"     . (:foreground "orange" :weight bold))
+;; 	("REVIEW"   . (:foreground "blue" :weight bold))
+;; 	("CANCELLED"  . (:foreground "snow4" :weight bold))
+;; 	("DEFINED"  . (:foreground "orange" :weight bold))
+;; 	("GEN"      . (:foreground "magenta" :weight bold))
+;; 	("SUBMIT"   . (:foreground "yellowgreen" :weight bold))
+;; 	("FAILED"   . (:foreground "snow4" :weight bold))
+;; 	))
 
-(setq org-support-shift-select t)
-(setq org-hide-leading-stars t) 
-(setq org-clock-into-drawer t)
-;(setq org-log-into-drawer t)
-(setq org-return-follows-link t)
-(setq org-export-copy-to-kill-ring nil)
-(setq org-export-kill-product-buffer-when-displayed t)
+;; (setq org-support-shift-select t)
+;; (setq org-hide-leading-stars t) 
+;; (setq org-clock-into-drawer t)
+;; ;(setq org-log-into-drawer t)
+;; (setq org-return-follows-link t)
+;; (setq org-export-copy-to-kill-ring nil)
+;; (setq org-export-kill-product-buffer-when-displayed t)
 
-(setq org-default-notes-file "~/.org/notes.org")
-(setq org-agenda-files (quote ("~/.org/life.org"
-			       "~/.org/work.org")))
+;; (setq org-default-notes-file "~/.org/notes.org")
+;; (setq org-agenda-files (quote ("~/.org/life.org"
+;; 			       "~/.org/work.org")))
 
-(setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "~/.org/work.org" "Tasks")
-	 "* TODO %?\n  %i\n  %a")
-        ("j" "Journal" entry (file+datetree "~/.org/journal.org")
-	 "* %?\nEntered on %U\n  %i\n  %a")))
+;; (setq org-capture-templates
+;;       '(("t" "Todo" entry (file+headline "~/.org/work.org" "Tasks")
+;; 	 "* TODO %?\n  %i\n  %a")
+;;         ("j" "Journal" entry (file+datetree "~/.org/journal.org")
+;; 	 "* %?\nEntered on %U\n  %i\n  %a")))
 
-(setq org-columns-default-format 
-      "%40ITEM %5Effort(Estimate){:} %5CLOCKSUM(Clocked) %10TODO(State)")
+;; (setq org-columns-default-format 
+;;       "%40ITEM %5Effort(Estimate){:} %5CLOCKSUM(Clocked) %10TODO(State)")
 
-(add-to-list 'auto-mode-alist '("\\.info\\'" . org-mode))
-(setq org-url-hexify-p nil)
-(setq org-agenda-skip-scheduled-if-done t)
+;; (add-to-list 'auto-mode-alist '("\\.info\\'" . org-mode))
+;; (setq org-url-hexify-p nil)
+;; (setq org-agenda-skip-scheduled-if-done t)
 
-(setq org-export-table-row-tags
-      (cons '(if head "<tr>"
-	       (if (= (mod nline 2) 1)
-		   "<tr class=\"tr-odd\">"
-		 "<tr class=\"tr-even\">")) "</tr>"))
+;; (setq org-export-table-row-tags
+;;       (cons '(if head "<tr>"
+;; 	       (if (= (mod nline 2) 1)
+;; 		   "<tr class=\"tr-odd\">"
+;; 		 "<tr class=\"tr-even\">")) "</tr>"))
 
-(add-hook 'org-mode-hook
-	  '(lambda ()
-	     (define-key org-mode-map "\M-p" 'outline-previous-visible-heading)
-	     (define-key org-mode-map "\M-n" 'outline-next-visible-heading)
-	     (define-key org-mode-map "\C-c\C-x\C-s" 'save-buffer)
-	     (define-key org-mode-map  (kbd "<C-tab>") 'switch-to-prev-buffer)
-	     (visual-line-mode 1) 
-	     (auto-fill-mode 1)))
+;; (add-hook 'org-mode-hook
+;; 	  '(lambda ()
+;; 	     (define-key org-mode-map "\M-p" 'outline-previous-visible-heading)
+;; 	     (define-key org-mode-map "\M-n" 'outline-next-visible-heading)
+;; 	     (define-key org-mode-map "\C-c\C-x\C-s" 'save-buffer)
+;; 	     (define-key org-mode-map  (kbd "<C-tab>") 'switch-to-prev-buffer)
+;; 	     (visual-line-mode 1) 
+;; 	     (auto-fill-mode 1)))
 
 ;-----------------------------------------------------------
 ; Terminal

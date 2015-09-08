@@ -59,3 +59,9 @@
 ;-----------------------------------------------------------
 (add-to-list 'auto-mode-alist '("\\.json$" . python-mode))
 
+
+;-----------------------------------------------------------
+; EDE CPP ROOT 
+;-----------------------------------------------------------
+;(ede-cpp-root-project "2l2v" :file "/ssh:shi210@hep.rcac.purdue.edu:/home/shi210/cmssw/CMSSW_7_4_2/src/UserCode/llvv_fwk/BuildFile.xml")
+

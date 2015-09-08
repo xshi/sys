@@ -6,7 +6,7 @@
 
 (global-set-key (quote [67108907]) (quote redo))
 
-(global-set-key "\C-ca"   'sx-agenda-day-view)
+;(global-set-key "\C-ca"   'sx-agenda-day-view)
 ; (global-set-key "\C-cA"   'sx-org-revert-agenda-buffers)
 
 (global-set-key "\C-ccr"  'comment-region)
@@ -15,8 +15,8 @@
 (global-set-key "\C-cd"   'sx-delete)
 
 (global-set-key "\C-ci"   'sx-insert)
-(global-set-key "\C-ck"   'org-capture)
-(global-set-key "\C-cl"   'org-store-link)
+;(global-set-key "\C-ck"   'org-capture)
+;(global-set-key "\C-cl"   'org-store-link)
 
 ; (global-set-key "\C-cmdl" 'sx-make-directory-log)
 
@@ -67,53 +67,53 @@
 ;; Outline-minor-mode
 ;;-----------------------------------------------------------
 
-(defmacro define-context-key (keymap key dispatch)
-  "Define KEY in KEYMAP to execute according to DISPATCH.
+;; (defmacro define-context-key (keymap key dispatch)
+;;   "Define KEY in KEYMAP to execute according to DISPATCH.
 
-DISPATCH is a form that is evaluated and should return the
-command to be executed.
+;; DISPATCH is a form that is evaluated and should return the
+;; command to be executed.
 
-If DISPATCH returns nil, then the command normally bound to KEY
-will be executed.
+;; If DISPATCH returns nil, then the command normally bound to KEY
+;; will be executed.
 
-Example:
+;; Example:
 
-  (define-context-key hs-minor-mode-map
-     (kbd \"<C-tab>\")
-     (cond
-      ((not (hs-already-hidden-p))
-       'hs-hide-block)
-      ((hs-already-hidden-p)
-       'hs-show-block)))
+;;   (define-context-key hs-minor-mode-map
+;;      (kbd \"<C-tab>\")
+;;      (cond
+;;       ((not (hs-already-hidden-p))
+;;        'hs-hide-block)
+;;       ((hs-already-hidden-p)
+;;        'hs-show-block)))
 
-This will make <C-tab> show a hidden block.  If the block is
-shown, then it'll be hidden."
-  `(define-key ,keymap ,key
-     `(menu-item "context-key" ignore
-                 :filter ,(lambda (&optional ignored)
-                            ,dispatch))))
+;; This will make <C-tab> show a hidden block.  If the block is
+;; shown, then it'll be hidden."
+;;   `(define-key ,keymap ,key
+;;      `(menu-item "context-key" ignore
+;;                  :filter ,(lambda (&optional ignored)
+;;                             ,dispatch))))
 
-(defun th-outline-context-p ()
-  "Non-nil if `point' is on an outline-heading."
-  (save-excursion
-    (goto-char (line-beginning-position))
-    (looking-at outline-regexp)))
+;; (defun th-outline-context-p ()
+;;   "Non-nil if `point' is on an outline-heading."
+;;   (save-excursion
+;;     (goto-char (line-beginning-position))
+;;     (looking-at outline-regexp)))
 
-(add-hook 'LaTeX-mode-hook
-          '(lambda ()
-             (outline-minor-mode 1)
-             (define-context-key outline-minor-mode-map
-               (kbd "TAB") (when (th-outline-context-p) 'org-cycle))))
+;; (add-hook 'LaTeX-mode-hook
+;;           '(lambda ()
+;;              (outline-minor-mode 1)
+;;              (define-context-key outline-minor-mode-map
+;;                (kbd "TAB") (when (th-outline-context-p) 'org-cycle))))
 
 
 ;;-----------------------------------------------------------
 ;; helm-minor-mode
 ;;-----------------------------------------------------------
-(add-hook 'helm-mode-hook
-	  (lambda ()
-	    (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
-	    (define-key helm-map (kbd "C-z") 'helm-select-action)
-	    ))
+;; (add-hook 'helm-mode-hook
+;; 	  (lambda ()
+;; 	    (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
+;; 	    (define-key helm-map (kbd "C-z") 'helm-select-action)
+;; 	    ))
 
 
 ;-----------------------------------------------------------

@@ -4,16 +4,20 @@
 (setq user-full-name "Xin Shi")
 (setq user-mail-address "Xin.Shi@outlook.com")
 
+
+;-----------------------------------------------------------
+; AUCTeX 
+;-----------------------------------------------------------
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
+
 ;-----------------------------------------------------------
 ; Auto-Complete
 ;-----------------------------------------------------------
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
-
-; (define-key ac-complete-mode-map (kbd "C-:") 'ac-complete-with-helm)
-
-
 
 ;-----------------------------------------------------------
 ; CMake 
@@ -58,10 +62,4 @@
 ; JSON with python mode 
 ;-----------------------------------------------------------
 (add-to-list 'auto-mode-alist '("\\.json$" . python-mode))
-
-
-;-----------------------------------------------------------
-; EDE CPP ROOT 
-;-----------------------------------------------------------
-;(ede-cpp-root-project "2l2v" :file "/ssh:shi210@hep.rcac.purdue.edu:/home/shi210/cmssw/CMSSW_7_4_2/src/UserCode/llvv_fwk/BuildFile.xml")
 

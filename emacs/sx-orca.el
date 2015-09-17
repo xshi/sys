@@ -8,6 +8,8 @@
 ;-----------------------------------------------------------
 ; AUCTeX 
 ;-----------------------------------------------------------
+(add-to-list 'auto-mode-alist '("\\.tex$" . LaTeX-mode))
+
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 (setq-default TeX-master nil)

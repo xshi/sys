@@ -20,7 +20,7 @@
 (require 'ido)
 (ido-mode t)
 
-(desktop-save-mode 1)
+;(desktop-save-mode 1)
 
 (require 'wdired)
 (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
@@ -53,7 +53,8 @@
 	(left-fringe . 1)
 	(right-fringe . 0)
 	(fringe) (tool-bar-lines . 0)
-	(top . 1) (right . 1) (width . 88) (height . 66)))
+	;(top . 1) (right . 1) (width . 88) (height . 66)
+	))
 
 ;-----------------------------------------------------------
 ; Terminal

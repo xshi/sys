@@ -83,7 +83,7 @@
 
 (defun sx-insert-python-exit ()
    (interactive "*")
-   (insert "sys.exit()")
+   (insert "exit()")
    (save-buffer)
    )
 

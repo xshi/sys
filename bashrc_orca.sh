@@ -172,7 +172,7 @@ sl() {
     # echo "[tn]      ssh xshi@lxplus5.cern.ch -L 10080:ntucms1.cern.ch:80 -N"
     # cat ~/.ssh/id_dsa.pub | ssh user@remote.com 'cat >> ~/.ssh/authorized_keys'
 
-    hostnames=(bohr cern clyd eceg etna fnal kaut lepp rcac)
+    hostnames=(bohr cern clyd eceg etna fnal kaut lepp rcac frie)
     
     export bohr=shi210@bohr.physics.purdue.edu
     export cern=xshi@lxplus.cern.ch
@@ -183,6 +183,7 @@ sl() {
     export kaut=xshi@kautzky.physics.purdue.edu
     export lepp=xs32@lnx235.lepp.cornell.edu
     export rcac=shi210@hep.rcac.purdue.edu
+    export frie=shi210@friedman.physics.purdue.edu
 
 
     if [ -z "$1" ]; then

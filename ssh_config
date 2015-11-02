@@ -4,11 +4,12 @@ Host lnx235
     user xs32
 
 Host lxplus*.cern.ch
- GSSAPIAuthentication yes
- GSSAPIDelegateCredentials yes
- GSSAPITrustDns yes
- Protocol 2
- ForwardX11 no
+     GSSAPIAuthentication yes
+     GSSAPIDelegateCredentials yes
+     GSSAPITrustDns yes
+     Protocol 2
+     ForwardX11 no
+     ServerAliveInterval 120	
 
 Host svn.cern.ch
    GSSAPIAuthentication yes

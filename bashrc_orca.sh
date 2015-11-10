@@ -46,7 +46,6 @@ bak(){
        rsync -avuE -P $HOME/Documents /Volumes/Ocean/Documents
        rsync -avuE -P $HOME/Pictures /Volumes/Ocean/Pictures
        rsync -avuE -P $HOME/Movies /Volumes/Ocean/Movies
-       #rsync -avuE -P /Users/xshi/Library/Application\ Support/Google/Picasa3 /Volumes/Ocean/Library/Application\ Support/Google/
 
    elif [ "$1" = "o2" ]; then
        rsync -avuE -P /Volumes/Ocean/ /Volumes/Ocean2/
@@ -95,8 +94,8 @@ cmsdoc(){
 	    ;;
 
 	s)  fn=$fname"_"`eval date +%Y%m%d`".pdf"
-	    cp $HOME/work/cms/doc/tdr/notes/tmp/$fname"_temp.pdf" ~/Google\ Drive/Work/AFB/$fn
-	    echo "Copied $fn to Box. "
+	    cp $HOME/work/cms/doc/tdr/notes/tmp/$fname"_temp.pdf" $HOME/Desktop/$fn
+	    echo "Copied $fn to Desktop. "
 	    ;;
 	u)  cd $HOME/work/cms/doc/tdr
 	    svn up notes/$fname 
@@ -158,19 +157,13 @@ setsys() {
     sudo cp ~/.sys/etc_krb5.conf /etc/krb5.conf 
     cp ~/.sys/ssh_config ~/.ssh/config 
     cp ~/.sys/dot_hgrc ~/.hgrc
-    #cp ~/bak/emacs/sx-ini.el ~/.emacs.d/init.el 
     echo "Setting system ... done."
 }
 
 
 sl() {
-    # echo "[ntu]     ntucms1.cern.ch"
-    # echo "[np]      pixel_dev@ntucms1.cern.ch"
-    # echo "[tb]      pixel_dev@pcpixeltb.cern.ch"
-    # echo "[ps]      pixel_dev@pcp028047.psi.ch"
-    # echo "[tn]      ssh xshi@lxplus5.cern.ch -L 10080:ntucms1.cern.ch:80 -N"
+    # echo "[tn]      ssh xshi@lxplus5.cern.ch -L 10080:remote.cern.ch:80 -N"
     # cat ~/.ssh/id_dsa.pub | ssh user@remote.com 'cat >> ~/.ssh/authorized_keys'
-
     hostnames=(bohr cern clyd eceg etna fnal kaut lepp rcac frie)
     
     export bohr=shi210@bohr.physics.purdue.edu

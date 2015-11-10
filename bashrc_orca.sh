@@ -116,18 +116,26 @@ et() {
 
 
 ki() {
+    hostnames=(cern fnal lepp)
     if [ -z "$1" ]; then
-	echo "lepp (l) , fnal (f), cern (c) ?"
-    fi;
-    if [ "$1" = "l" ]; then
-	kinit -f -l 7d xs32@LNS.CORNELL.EDU
-    fi; 
-    if [ "$1" = "f" ]; then
-	kinit -f xshi@FNAL.GOV
-    fi; 
-    if [ "$1" = "c" ]; then
-	kinit -Af -l 1d xshi@CERN.CH
-    fi; 
+        for hostname in ${hostnames[*]}
+	do
+	    subst="$hostname"
+            echo "    ["$hostname"]" ${!subst}
+	done
+   	read menu 
+    else
+    	menu=$1
+    fi
+
+    case $menu in
+	lepp) kinit -f -l 7d xs32@LNS.CORNELL.EDU
+	      ;;
+	fnal) kinit -f xshi@FNAL.GOV
+	      ;;
+	cern) kinit -Af -l 1d xshi@CERN.CH
+	      ;;
+    esac
 }
 
 

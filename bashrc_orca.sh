@@ -164,20 +164,21 @@ setsys() {
 sl() {
     # echo "[tn]      ssh xshi@lxplus5.cern.ch -L 10080:remote.cern.ch:80 -N"
     # cat ~/.ssh/id_dsa.pub | ssh user@remote.com 'cat >> ~/.ssh/authorized_keys'
-    hostnames=(bohr cern clyd eceg etna fnal frie ihep kaut lepp rcac)
+    #hostnames=(bohr cern clyd eceg etna fnal frie ihep kaut lepp rcac)
+    hostnames=(cern fnal ihep ihep5)
     
-    export bohr=shi210@bohr.physics.purdue.edu
+    #export bohr=shi210@bohr.physics.purdue.edu
     export cern=xshi@lxplus.cern.ch
-    export clyd=shi210@clyde.physics.purdue.edu
-    export eceg=shi210@ecegrid.ecn.purdue.edu
-    export etna=purduepix@etna.physics.purdue.edu
+    #export clyd=shi210@clyde.physics.purdue.edu
+    #export eceg=shi210@ecegrid.ecn.purdue.edu
+    #export etna=purduepix@etna.physics.purdue.edu
     export fnal=xshi@cmslpc-sl6.fnal.gov
-    export frie=shi210@friedman.physics.purdue.edu
+    #export frie=shi210@friedman.physics.purdue.edu
     export ihep=shixin@lxslc6.ihep.ac.cn
-    export kaut=xshi@kautzky.physics.purdue.edu
-    export lepp=xs32@lnx235.lepp.cornell.edu
-    export rcac=shi210@hep.rcac.purdue.edu
-
+    export ihep5=shixin@lxslc5.ihep.ac.cn
+    #export kaut=xshi@kautzky.physics.purdue.edu
+    #export lepp=xs32@lnx235.lepp.cornell.edu
+    #export rcac=shi210@hep.rcac.purdue.edu
 
 
     if [ -z "$1" ]; then

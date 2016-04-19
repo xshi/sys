@@ -206,7 +206,7 @@ sl() {
 
 syn() {
     if [ -z "$1" ]; then
-	echo "[1]  etna:cmspxl/dat ==> orca4"
+	echo "[1]  ihep:jpsi2invi.root ==> orca4"
 	echo "[2]  orca4:cmspxl/dat ==> etna"
 	echo "[3]  rcac:hzz2l2nu/plots ==> orca4"
 	read menu 
@@ -215,7 +215,7 @@ syn() {
     fi
 
     case $menu in 
-	1) rsync -a -P purduepix@etna.physics.purdue.edu:~/cmspxl/dat/ ~/work/cms/pxl/cmspxl/dat/
+	1) scp shixin@lxslc5.ihep.ac.cn:~/bes/jpsi2invi/v0.1/jpsi2invi.root ~/work/bes/jpsi2invi/v0.1/ 
 	   ;;
 	2) rsync -a -P ~/work/cms/pxl/cmspxl/dat/ purduepix@etna.physics.purdue.edu:~/cmspxl/dat/ 
 	   ;;

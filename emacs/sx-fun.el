@@ -223,10 +223,11 @@
 
 (defun sx-execute ()
   (interactive)
-  (message "Execute:  [x]last [c]md [r]egion")
+  (message "Execute:  [b]uild [x]last [c]md [r]egion")
   (let (r1)
     (setq r1 (read-char-exclusive))
     (cond 
+     ((eq r1 ?b) (call-interactively 'sx-execute-last-command-in-frame-build))
      ((eq r1 ?x) (call-interactively 'sx-execute-last-command-in-frame))
      ((eq r1 ?c) (call-interactively 'sx-execute-cmdline-in-frame))
      ((eq r1 ?r) (call-interactively 'sx-execute-region-as-command-in-frame)))
@@ -257,6 +258,20 @@
      (term-send-raw-string "\n")
      (switch-to-buffer-other-frame coding-buffer-name)
      ))
+
+(defun sx-execute-last-command-in-frame-build ()
+   (interactive "*")
+   ;(let (frame-name)
+     ;(setq frame-name (sx-get-frame-name))
+     (if (buffer-modified-p)
+    	(save-buffer))
+     (setq coding-buffer-name (buffer-name))
+     (switch-to-buffer-other-frame "*build<1>*")
+     (term-send-up)
+     (term-send-raw-string "\n")
+     (switch-to-buffer-other-frame coding-buffer-name)
+     )
+
 
 
 (defun sx-execute-region-as-command-in-frame (begin end)

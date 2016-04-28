@@ -65,3 +65,5 @@
 ;-----------------------------------------------------------
 (add-to-list 'auto-mode-alist '("\\.json$" . python-mode))
 
+; Making the PATH available in term 
+(exec-path-from-shell-initialize)

@@ -215,7 +215,7 @@ syn() {
     fi
 
     case $menu in 
-	1) scp shixin@lxslc5.ihep.ac.cn:~/bes/jpsi2invi/v0.1/jpsi2invi.root ~/work/bes/jpsi2invi/v0.1/ 
+	1) scp shixin@lxslc5.ihep.ac.cn:~/bes/jpsi2invi/v0.1/jpsi2invi.root ~/bes/jpsi2invi/v0.1/ 
 	   ;;
 	2) rsync -a -P ~/work/cms/pxl/cmspxl/dat/ purduepix@etna.physics.purdue.edu:~/cmspxl/dat/ 
 	   ;;

@@ -20,7 +20,8 @@ alias l="ls"
 alias ll="ls -lh"
 alias p="pwd"
 alias rm~="rm *~"
-alias rl="root -l" 
+alias rl="root -l"
+alias qs="qstat -u shixin"
 
 #--------------------------------------------------
 # General ENV

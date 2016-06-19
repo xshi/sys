@@ -39,6 +39,11 @@ batch_kill() {
     pgrep $1 | awk '{print  "kill -9 "$1}' | sh  
 }
 
-
+setpyroot() {
+    echo "Setting up python 2.7.11 and ROOT 5.34..."
+    export PYTHONPATH=$HOME/local/lib
+    export LD_LIBRARY_PATH=$HOME/local/lib
+    source $HOME/local/root/bin/thisroot.sh 
+}
 
 

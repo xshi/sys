@@ -40,7 +40,7 @@ alias rm~="rm *~"
 
 bak(){
    if [ -z "$1" ]; then
-       echo "Ocean(o) Ocean2(o2) ?"
+       echo "Ocean(o) Ocean2(o2) Ocean3(o3)?"
 
    elif [ "$1" = "o" ]; then
        rsync -avuE -P $HOME/Documents /Volumes/Ocean/Documents
@@ -49,6 +49,11 @@ bak(){
 
    elif [ "$1" = "o2" ]; then
        rsync -avuE -P /Volumes/Ocean/ /Volumes/Ocean2/
+
+   elif [ "$1" = "o3" ]; then
+       rsync -avuE -P $HOME/Documents /Volumes/Ocean3/Documents
+       rsync -avuE -P $HOME/Pictures /Volumes/Ocean3/Pictures
+       rsync -avuE -P $HOME/Movies /Volumes/Ocean3/Movies
 
    fi;
 }
@@ -208,7 +213,7 @@ sl() {
 
 syn() {
     if [ -z "$1" ]; then
-	echo "[1]  ihep:jpsi2invi.root ==> orca4"
+	echo "[1]  ihep:bes/jpsi2invi/v0.1/run/hist ==> orca4"
 	echo "[2]  orca4:cmspxl/dat ==> etna"
 	echo "[3]  rcac:hzz2l2nu/plots ==> orca4"
 	read menu 
@@ -217,7 +222,7 @@ syn() {
     fi
 
     case $menu in 
-	1) scp shixin@lxslc5.ihep.ac.cn:~/bes/jpsi2invi/v0.1/*.root ~/bes/jpsi2invi/v0.1/ 
+	1) rsync -a -P shixin@lxslc5.ihep.ac.cn:~/bes/jpsi2invi/v0.1/run/hist/ ~/bes/jpsi2invi/v0.1/run/hist/ 
 	   ;;
 	2) rsync -a -P ~/work/cms/pxl/cmspxl/dat/ purduepix@etna.physics.purdue.edu:~/cmspxl/dat/ 
 	   ;;

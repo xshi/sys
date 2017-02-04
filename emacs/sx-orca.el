@@ -67,3 +67,11 @@
 
 ; Making the PATH available in term 
 (exec-path-from-shell-initialize)
+
+
+;-----------------------------------------------------------
+; TRAMP mode 
+;-----------------------------------------------------------
+;(require 'tramp)
+;(add-to-list 'tramp-remote-path "$HOME/local/bin")
+

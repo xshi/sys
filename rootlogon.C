@@ -17,7 +17,8 @@
   myStyle->SetStatColor(0);
   myStyle->SetPalette(1);
   myStyle->SetLabelSize(0.025,"xyz"); // size of axis values
-  myStyle->SetTitleOffset(1.2, "Y");  
+  // myStyle->SetTitleOffset(1.2, "Y");  
+  // myStyle->SetTitleOffset(1.2, "X");  
 
   // default canvas positioning
   

@@ -53,6 +53,7 @@ bak(){
    elif [ "$1" = "o3" ]; then
        rsync -avuE -P $HOME/Documents /Volumes/Ocean3/Documents
        rsync -avuE -P $HOME/Pictures /Volumes/Ocean3/Pictures
+       rsync -avuE -P /Volumes/Ocean/Pictures/Photos\ Library.photoslibrary /Volumes/Ocean3/Pictures/Photos\ Library.photoslibrary
        rsync -avuE -P $HOME/Movies /Volumes/Ocean3/Movies
 
    fi;
@@ -170,7 +171,7 @@ sl() {
     # echo "[tn]      ssh xshi@lxplus5.cern.ch -L 10080:remote.cern.ch:80 -N"
     # cat ~/.ssh/id_dsa.pub | ssh user@remote.com 'cat >> ~/.ssh/authorized_keys'
     #hostnames=(bohr cern clyd eceg etna fnal frie ihep kaut lepp rcac)
-    hostnames=(cern fnal ihep ihep5 pixel emc)
+    hostnames=(cern fnal ihep ihep5 lepp pixel emc)
     
     #export bohr=shi210@bohr.physics.purdue.edu
     export cern=xshi@lxplus.cern.ch
@@ -185,6 +186,7 @@ sl() {
     export emc=shixin@192.168.28.246 
     #export kaut=xshi@kautzky.physics.purdue.edu
     #export lepp=xs32@lnx235.lepp.cornell.edu
+    export lepp=xs32@lnx201.classe.cornell.edu
     #export rcac=shi210@hep.rcac.purdue.edu
 
 

@@ -16,7 +16,7 @@ export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export CVSEDITOR=vim
 export PATH=$HOME/local/bin:$PATH
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH #for MacPorts
+export PATH=/opt/local/bin:/opt/local/sbin:/Applications/CMake.app/Contents/bin:$PATH #for MacPorts 
 export LESS='-R'
 export LESSOPEN='|~/.sys/lessfilter.sh %s' 
 
@@ -241,4 +241,6 @@ function tabname {
 function winname {
   printf "\e]2;$1\a"
 }
+
+
 

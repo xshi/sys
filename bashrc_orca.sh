@@ -172,17 +172,19 @@ sl() {
     # echo "[tn]      ssh xshi@lxplus5.cern.ch -L 10080:remote.cern.ch:80 -N"
     # cat ~/.ssh/id_dsa.pub | ssh user@remote.com 'cat >> ~/.ssh/authorized_keys'
     #hostnames=(bohr cern clyd eceg etna fnal frie ihep kaut lepp rcac)
-    hostnames=(cern fnal ihep ihep5 lepp pixel emc)
+    hostnames=(cern cepc ihep ihep5 lepp pixel emc)
     
     #export bohr=shi210@bohr.physics.purdue.edu
     export cern=xshi@lxplus.cern.ch
     #export clyd=shi210@clyde.physics.purdue.edu
     #export eceg=shi210@ecegrid.ecn.purdue.edu
     #export etna=purduepix@etna.physics.purdue.edu
-    export fnal=xshi@cmslpc-sl6.fnal.gov
+    #export fnal=xshi@cmslpc-sl6.fnal.gov
+    export cepc=shixin@cepcvtx.ihep.ac.cn
     #export frie=shi210@friedman.physics.purdue.edu
     export ihep=shixin@lxslc6.ihep.ac.cn
     export ihep5=shixin@lxslc5.ihep.ac.cn
+
     export pixel=shixin@192.168.28.247 
     export emc=shixin@192.168.28.246 
     #export kaut=xshi@kautzky.physics.purdue.edu

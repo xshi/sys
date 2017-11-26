@@ -29,4 +29,10 @@ Host lxslc*.ihep.ac.cn
      #GSSAPITrustDns yes
      Protocol 2
      ForwardX11 no
-     ServerAliveInterval 120	
+     ServerAliveInterval 120
+
+Host cepc*.ihep.ac.cn
+     ForwardAgent yes
+     ForwardX11 yes
+
+XAuthLocation /opt/X11/bin/xauth

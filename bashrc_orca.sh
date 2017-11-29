@@ -33,7 +33,8 @@ alias rl="root -l"
 alias rm~="rm *~"
 alias cdoutlook="cd /Users/xshi/Library/Group\ Containers/UBF8T346G9.Office/Outlook/Outlook\ 15\ Profiles/Main\ Profile/Data/Message\ Attachments"
 
-. ~/local/share/root/bin/thisroot.sh
+#. ~/local/share/root/bin/thisroot.sh
+. ~/local/share/root-6.10.06/build/bin/thisroot.sh 
 
 #--------------------------------------------------
 # Functions 

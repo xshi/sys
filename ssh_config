@@ -30,10 +30,23 @@ Host lxslc*.ihep.ac.cn
      Protocol 2
      ForwardX11 no
      ServerAliveInterval 120
+     RemoteForward 52698 127.0.0.1:52698 
 
 Host cepc*.ihep.ac.cn
      ForwardAgent yes
      ForwardX11 yes
      RemoteForward 52698 127.0.0.1:52698 
+
+
+Host github.com                                                             
+     HostName github.com
+     PreferredAuthentications publickey
+     IdentityFile ~/.ssh/id_rsa
+  
+Host gitlab.cern.ch
+     HostName gitlab.cern.ch
+     IdentityFile ~/.ssh/id_rsa.gitlab
+     User xin.shi
+
 
 XAuthLocation /opt/X11/bin/xauth

@@ -16,9 +16,8 @@ export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export CVSEDITOR=vim
 export PATH=$HOME/local/bin:$PATH
-export PATH=/opt/local/bin:/opt/local/sbin:/Applications/CMake.app/Contents/bin:$PATH #for MacPorts 
-export LESS='-R'
-export LESSOPEN='|~/.sys/lessfilter.sh %s' 
+#export PATH=/opt/local/bin:/opt/local/sbin:/Applications/CMake.app/Contents/bin:$PATH #for MacPorts 
+
 
 #--------------------------------------------------
 # General Aliases
@@ -61,60 +60,6 @@ bak(){
 
    fi;
 }
-
-
-cmsdoc(){
-    if [ -z "$1" ]; then
-	echo "Usage: cmsdoc style fname action"
-	echo "eg.: cmsdoc an AN-12-066 u"
-	echo "an, dn, pas ?"
-	read sty 
-    else
-	sty=$1
-    fi
-
-    if [ -z "$2" ]; then
-	echo "Input fname: "
-	echo "eg. : AN-12-066"
-	read fname 
-    else
-	fname=$2
-    fi
-    
-    if [ -z "$3" ]; then
-	echo "[b] build"
-	echo "[o] open"
-	echo "[s] share"
-	echo "[u] update"
-	read action 
-    else
-	action=$3
-    fi
-    
-    pwd=$PWD
-
-    case $action in 
-	b)  cd $HOME/work/cms/doc/tdr
-	    eval `./notes/tdr runtime -sh` 
-	    cd notes/$fname/trunk
-	    tdr --style=$sty b $fname 
-	    ;;
-	o)  open $HOME/work/cms/doc/tdr/notes/tmp/$fname"_temp.pdf"
-	    ;;
-
-	s)  fn=$fname"_"`eval date +%Y%m%d`".pdf"
-	    cp $HOME/work/cms/doc/tdr/notes/tmp/$fname"_temp.pdf" $HOME/Desktop/$fn
-	    echo "Copied $fn to Desktop. "
-	    ;;
-	u)  cd $HOME/work/cms/doc/tdr
-	    svn up notes/$fname 
-	    ;;
-    esac
-
-    cd $pwd 
-}
-
-
 
 
 et() {
@@ -173,26 +118,18 @@ setsys() {
 sl() {
     # echo "[tn]      ssh xshi@lxplus5.cern.ch -L 10080:remote.cern.ch:80 -N"
     # cat ~/.ssh/id_dsa.pub | ssh user@remote.com 'cat >> ~/.ssh/authorized_keys'
-    #hostnames=(bohr cern clyd eceg etna fnal frie ihep kaut lepp rcac)
     hostnames=(cern cepc ihep ihep5 lepp pixel emc)
     
-    #export bohr=shi210@bohr.physics.purdue.edu
+ 
     export cern=xshi@lxplus.cern.ch
-    #export clyd=shi210@clyde.physics.purdue.edu
-    #export eceg=shi210@ecegrid.ecn.purdue.edu
-    #export etna=purduepix@etna.physics.purdue.edu
-    #export fnal=xshi@cmslpc-sl6.fnal.gov
     export cepc=shixin@cepcvtx.ihep.ac.cn
-    #export frie=shi210@friedman.physics.purdue.edu
     export ihep=shixin@lxslc6.ihep.ac.cn
     export ihep5=shixin@lxslc5.ihep.ac.cn
 
     export pixel=shixin@192.168.28.247 
     export emc=shixin@192.168.28.246 
-    #export kaut=xshi@kautzky.physics.purdue.edu
-    #export lepp=xs32@lnx235.lepp.cornell.edu
+
     export lepp=xs32@lnx201.classe.cornell.edu
-    #export rcac=shi210@hep.rcac.purdue.edu
 
 
     if [ -z "$1" ]; then
@@ -215,27 +152,6 @@ sl() {
 	    ssh -Y ${!subst}
 	fi 
     done
-}
-
-
-syn() {
-    if [ -z "$1" ]; then
-	echo "[1]  ihep:bes/jpsi2invi/v0.1/run/hist ==> orca4"
-	echo "[2]  orca4:cmspxl/dat ==> etna"
-	echo "[3]  rcac:hzz2l2nu/plots ==> orca4"
-	read menu 
-    else
-	menu=$1
-    fi
-
-    case $menu in 
-	1) rsync -a -P shixin@lxslc5.ihep.ac.cn:~/bes/jpsi2invi/v0.1/run/hist/ ~/bes/jpsi2invi/v0.1/run/hist/ 
-	   ;;
-	2) rsync -a -P ~/work/cms/pxl/cmspxl/dat/ purduepix@etna.physics.purdue.edu:~/cmspxl/dat/ 
-	   ;;
-	3) rsync -a -P shi210@hep.rcac.purdue.edu:/home/shi210/cmssw/CMSSW_7_2_2/src/UserCode/llvv_fwk/test/phojet/plots/ ~/work/cms/hzz/2l2v_fwk/test/phojet/plots/
-	   ;;
-    esac
 }
 
 function tabname {

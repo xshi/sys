@@ -35,4 +35,16 @@ Host cepc*.ihep.ac.cn
      ForwardAgent yes
      ForwardX11 yes
 
+
+Host github.com                                                             
+     HostName github.com
+     PreferredAuthentications publickey
+     IdentityFile ~/.ssh/id_rsa
+  
+Host gitlab.cern.ch
+     HostName gitlab.cern.ch
+     IdentityFile ~/.ssh/id_rsa.gitlab
+     User xin.shi
+
+
 XAuthLocation /opt/X11/bin/xauth

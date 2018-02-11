@@ -34,6 +34,7 @@ Host lxslc*.ihep.ac.cn
 Host cepc*.ihep.ac.cn
      ForwardAgent yes
      ForwardX11 yes
+     RemoteForward 52698 127.0.0.1:52698 
 
 
 Host github.com                                                             

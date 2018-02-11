@@ -16,7 +16,7 @@ export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export CVSEDITOR=vim
 export PATH=$HOME/local/bin:$PATH
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH #for MacPorts
+export PATH=/opt/local/bin:/opt/local/sbin:/Applications/CMake.app/Contents/bin:$PATH #for MacPorts 
 export LESS='-R'
 export LESSOPEN='|~/.sys/lessfilter.sh %s' 
 
@@ -31,8 +31,11 @@ alias ec="emacsclient"
 alias p="pwd"
 alias rl="root -l" 
 alias rm~="rm *~"
+alias cdoutlook="cd /Users/xshi/Library/Group\ Containers/UBF8T346G9.Office/Outlook/Outlook\ 15\ Profiles/Main\ Profile/Data/Message\ Attachments"
+alias sr="ssh -R 52698:127.0.0.1:52698" 
 
-. ~/local/share/root/bin/thisroot.sh
+#. ~/local/share/root/bin/thisroot.sh
+. ~/local/share/root-6.10.06/build/bin/thisroot.sh 
 
 #--------------------------------------------------
 # Functions 
@@ -40,7 +43,7 @@ alias rm~="rm *~"
 
 bak(){
    if [ -z "$1" ]; then
-       echo "Ocean(o) Ocean2(o2) ?"
+       echo "Ocean(o) Ocean2(o2) Ocean3(o3)?"
 
    elif [ "$1" = "o" ]; then
        rsync -avuE -P $HOME/Documents /Volumes/Ocean/Documents
@@ -49,6 +52,12 @@ bak(){
 
    elif [ "$1" = "o2" ]; then
        rsync -avuE -P /Volumes/Ocean/ /Volumes/Ocean2/
+
+   elif [ "$1" = "o3" ]; then
+       rsync -avuE -P $HOME/Documents /Volumes/Ocean3/Documents
+       rsync -avuE -P $HOME/Pictures /Volumes/Ocean3/Pictures
+       rsync -avuE -P /Volumes/Ocean/Pictures/Photos\ Library.photoslibrary /Volumes/Ocean3/Pictures/Photos\ Library.photoslibrary
+       rsync -avuE -P $HOME/Movies /Volumes/Ocean3/Movies
 
    fi;
 }
@@ -164,20 +173,26 @@ setsys() {
 sl() {
     # echo "[tn]      ssh xshi@lxplus5.cern.ch -L 10080:remote.cern.ch:80 -N"
     # cat ~/.ssh/id_dsa.pub | ssh user@remote.com 'cat >> ~/.ssh/authorized_keys'
-    hostnames=(bohr cern clyd eceg etna fnal frie ihep kaut lepp rcac)
+    #hostnames=(bohr cern clyd eceg etna fnal frie ihep kaut lepp rcac)
+    hostnames=(cern cepc ihep ihep5 lepp pixel emc)
     
-    export bohr=shi210@bohr.physics.purdue.edu
+    #export bohr=shi210@bohr.physics.purdue.edu
     export cern=xshi@lxplus.cern.ch
-    export clyd=shi210@clyde.physics.purdue.edu
-    export eceg=shi210@ecegrid.ecn.purdue.edu
-    export etna=purduepix@etna.physics.purdue.edu
-    export fnal=xshi@cmslpc-sl6.fnal.gov
-    export frie=shi210@friedman.physics.purdue.edu
+    #export clyd=shi210@clyde.physics.purdue.edu
+    #export eceg=shi210@ecegrid.ecn.purdue.edu
+    #export etna=purduepix@etna.physics.purdue.edu
+    #export fnal=xshi@cmslpc-sl6.fnal.gov
+    export cepc=shixin@cepcvtx.ihep.ac.cn
+    #export frie=shi210@friedman.physics.purdue.edu
     export ihep=shixin@lxslc6.ihep.ac.cn
-    export kaut=xshi@kautzky.physics.purdue.edu
-    export lepp=xs32@lnx235.lepp.cornell.edu
-    export rcac=shi210@hep.rcac.purdue.edu
+    export ihep5=shixin@lxslc5.ihep.ac.cn
 
+    export pixel=shixin@192.168.28.247 
+    export emc=shixin@192.168.28.246 
+    #export kaut=xshi@kautzky.physics.purdue.edu
+    #export lepp=xs32@lnx235.lepp.cornell.edu
+    export lepp=xs32@lnx201.classe.cornell.edu
+    #export rcac=shi210@hep.rcac.purdue.edu
 
 
     if [ -z "$1" ]; then
@@ -205,7 +220,7 @@ sl() {
 
 syn() {
     if [ -z "$1" ]; then
-	echo "[1]  etna:cmspxl/dat ==> orca4"
+	echo "[1]  ihep:bes/jpsi2invi/v0.1/run/hist ==> orca4"
 	echo "[2]  orca4:cmspxl/dat ==> etna"
 	echo "[3]  rcac:hzz2l2nu/plots ==> orca4"
 	read menu 
@@ -214,7 +229,7 @@ syn() {
     fi
 
     case $menu in 
-	1) rsync -a -P purduepix@etna.physics.purdue.edu:~/cmspxl/dat/ ~/work/cms/pxl/cmspxl/dat/
+	1) rsync -a -P shixin@lxslc5.ihep.ac.cn:~/bes/jpsi2invi/v0.1/run/hist/ ~/bes/jpsi2invi/v0.1/run/hist/ 
 	   ;;
 	2) rsync -a -P ~/work/cms/pxl/cmspxl/dat/ purduepix@etna.physics.purdue.edu:~/cmspxl/dat/ 
 	   ;;
@@ -230,4 +245,6 @@ function tabname {
 function winname {
   printf "\e]2;$1\a"
 }
+
+
 

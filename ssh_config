@@ -30,14 +30,14 @@ Host lxslc*.ihep.ac.cn
      Protocol 2
      ForwardX11 no
      ServerAliveInterval 120
-     RemoteForward 52698 127.0.0.1:52698 
+     RemoteForward 52699 127.0.0.1:52698 
 
 Host cepc*.ihep.ac.cn
      ForwardAgent yes
      ForwardX11 yes
      XAuthLocation /opt/X11/bin/xauth
      ForwardX11Trusted yes 
-     RemoteForward 52698 127.0.0.1:52698 
+     RemoteForward 52699 127.0.0.1:52698 
 
 
 Host github.com                                                             

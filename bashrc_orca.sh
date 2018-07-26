@@ -15,8 +15,10 @@ fi
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export CVSEDITOR=vim
+#export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/local/bin:$PATH
 #export PATH=/opt/local/bin:/opt/local/sbin:/Applications/CMake.app/Contents/bin:$PATH #for MacPorts 
+export PATH=/usr/local/Cellar/ruby/2.5.1/bin:$PATH
 
 
 #--------------------------------------------------
@@ -31,7 +33,9 @@ alias p="pwd"
 alias rl="root -l" 
 alias rm~="rm *~"
 alias cdoutlook="cd /Users/xshi/Library/Group\ Containers/UBF8T346G9.Office/Outlook/Outlook\ 15\ Profiles/Main\ Profile/Data/Message\ Attachments"
-alias sr="ssh -R 52698:127.0.0.1:52698" 
+#alias sr="ssh -R 52698:127.0.0.1:52698" 
+alias sd="ssh -D 9999 xshi@lxplus.cern.ch"
+alias jk="bundle exec jekyll serve"
 
 #. ~/local/share/root/bin/thisroot.sh
 . ~/local/share/root-6.10.06/build/bin/thisroot.sh 

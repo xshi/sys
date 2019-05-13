@@ -15,10 +15,8 @@ fi
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export CVSEDITOR=vim
-#export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/local/bin:$PATH
-#export PATH=/opt/local/bin:/opt/local/sbin:/Applications/CMake.app/Contents/bin:$PATH #for MacPorts 
-export PATH=/usr/local/Cellar/ruby/2.5.1/bin:$PATH
+#export PATH=/usr/local/Cellar/ruby/2.5.1/bin:$PATH
 
 
 #--------------------------------------------------
@@ -38,7 +36,7 @@ alias sd="ssh -D 9999 xshi@lxplus.cern.ch"
 alias jk="bundle exec jekyll serve"
 
 #. ~/local/share/root/bin/thisroot.sh
-. ~/local/share/root-6.10.06/build/bin/thisroot.sh 
+. ~/local/share/root_v6.16.00/bin/thisroot.sh 
 
 #--------------------------------------------------
 # Functions 
@@ -153,7 +151,16 @@ sl() {
 	if [[ $menu == $hostname ]];
 	then
 	    echo "Logging into" ${!subst} "..." 
-	    ssh -Y ${!subst}
+        case $menu in 
+
+        cepc) echo "Using port 52699 for remote edit."
+        ssh -Y -R 52699:127.0.0.1:52698 ${!subst} 
+        ;;
+
+        * ) 
+	    ssh -Y ${!subst} 
+        ;; 
+        esac 
 	fi 
     done
 }

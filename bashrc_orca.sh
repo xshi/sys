@@ -44,7 +44,10 @@ alias jk="bundle exec jekyll serve"
 
 bak(){
    if [ -z "$1" ]; then
-       echo "Ocean(o) Ocean2(o2) Ocean3(o3)?"
+       echo "IHEPBox(i) Ocean(o) Ocean2(o2) Ocean3(o3)?"
+
+   elif [ "$1" = "i" ]; then
+       rsync -avuE -P $HOME/Documents $HOME/IHEPBox
 
    elif [ "$1" = "o" ]; then
        rsync -avuE -P $HOME/Documents /Volumes/Ocean/Documents
@@ -120,13 +123,13 @@ setsys() {
 sl() {
     # echo "[tn]      ssh xshi@lxplus5.cern.ch -L 10080:remote.cern.ch:80 -N"
     # cat ~/.ssh/id_dsa.pub | ssh user@remote.com 'cat >> ~/.ssh/authorized_keys'
-    hostnames=(cern cepc ihep ihep5 lepp pixel emc)
+    hostnames=(cern cepc ihep ihep7 lepp pixel emc)
     
  
     export cern=xshi@lxplus.cern.ch
     export cepc=shixin@cepcvtx.ihep.ac.cn
     export ihep=shixin@lxslc6.ihep.ac.cn
-    export ihep5=shixin@lxslc5.ihep.ac.cn
+    export ihep7=shixin@lxslc7.ihep.ac.cn
 
     export pixel=shixin@192.168.28.247 
     export emc=shixin@192.168.28.246 

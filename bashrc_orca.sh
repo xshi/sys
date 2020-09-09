@@ -16,6 +16,9 @@ export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export CVSEDITOR=vim
 export PATH=$HOME/local/bin:$PATH
+export PATH=/Applications/CMake.app/Contents/bin:$PATH
+# For MacPort: 
+export PATH=/opt/local/bin:$PATH
 #export PATH=/usr/local/Cellar/ruby/2.5.1/bin:$PATH
 
 
@@ -36,7 +39,10 @@ alias sd="ssh -D 9999 xshi@lxplus.cern.ch"
 alias jk="bundle exec jekyll serve"
 
 #. ~/local/share/root/bin/thisroot.sh
-. ~/local/share/root_v6.16.00/bin/thisroot.sh 
+#. ~/local/share/root_v6.16.00/bin/thisroot.sh 
+#. /Applications/root_v6.20.04/bin/thisroot.sh 
+
+. ~/local/share/root6-build/bin/thisroot.sh 
 
 #--------------------------------------------------
 # Functions 
@@ -128,8 +134,7 @@ sl() {
  
     export cern=xshi@lxplus.cern.ch
     export cepc=shixin@cepcvtx.ihep.ac.cn
-    export ihep=shixin@lxslc6.ihep.ac.cn
-    export ihep7=shixin@lxslc7.ihep.ac.cn
+    export ihep=shixin@lxslc7.ihep.ac.cn
 
     export pixel=shixin@192.168.28.247 
     export emc=shixin@192.168.28.246 
@@ -175,6 +180,4 @@ function tabname {
 function winname {
   printf "\e]2;$1\a"
 }
-
-
 

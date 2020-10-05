@@ -19,8 +19,9 @@ export PATH=$HOME/local/bin:$PATH
 export PATH=/Applications/CMake.app/Contents/bin:$PATH
 # For MacPort: 
 export PATH=/opt/local/bin:$PATH
-#export PATH=/usr/local/Cellar/ruby/2.5.1/bin:$PATH
-
+# Ruby 
+export PATH=/usr/local/opt/ruby/bin:$PATH
+export LC_CTYPE="utf-8"
 
 #--------------------------------------------------
 # General Aliases
@@ -28,8 +29,7 @@ export PATH=/opt/local/bin:$PATH
 alias l="ls"
 alias ll="l -lh"
 alias lsd="l -d */"
-alias en="emacs -nw"
-alias ec="emacsclient"
+
 alias p="pwd"
 alias rl="root -l" 
 alias rm~="rm *~"

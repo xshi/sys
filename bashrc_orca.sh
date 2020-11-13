@@ -12,6 +12,10 @@ fi
 #--------------------------------------------------
 # General ENV
 #--------------------------------------------------
+#export LANG=en_US
+#export LC_CTYPE="utf-8"
+
+
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export CVSEDITOR=vim
@@ -21,7 +25,7 @@ export PATH=/Applications/CMake.app/Contents/bin:$PATH
 export PATH=/opt/local/bin:$PATH
 # Ruby 
 export PATH=/usr/local/opt/ruby/bin:$PATH
-export LC_CTYPE="utf-8"
+
 
 #--------------------------------------------------
 # General Aliases

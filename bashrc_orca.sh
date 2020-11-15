@@ -41,6 +41,7 @@ alias cdoutlook="cd /Users/xshi/Library/Group\ Containers/UBF8T346G9.Office/Outl
 #alias sr="ssh -R 52698:127.0.0.1:52698" 
 alias sd="ssh -D 9999 xshi@lxplus.cern.ch"
 alias jk="bundle exec jekyll serve"
+alias dk_tracs="docker run --interactive --rm --tty  --volume $HOME:/data  --name=tracs rd50/tracs bash"
 
 #. ~/local/share/root/bin/thisroot.sh
 #. ~/local/share/root_v6.16.00/bin/thisroot.sh 

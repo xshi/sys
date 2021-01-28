@@ -40,6 +40,7 @@ alias rm~="rm *~"
 alias cdoutlook="cd /Users/xshi/Library/Group\ Containers/UBF8T346G9.Office/Outlook/Outlook\ 15\ Profiles/Main\ Profile/Data/Message\ Attachments"
 #alias sr="ssh -R 52698:127.0.0.1:52698" 
 alias sd="ssh -D 9999 xshi@lxplus.cern.ch"
+alias si="ssh -D 9999 shixin@lxslc7.ihep.ac.cn"
 alias jk="bundle exec jekyll serve"
 alias dk_tracs="docker run --interactive --rm --tty  --volume $HOME:/data  --name=tracs rd50/tracs bash"
 

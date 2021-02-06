@@ -135,11 +135,11 @@ setsys() {
 sl() {
     # echo "[tn]      ssh xshi@lxplus5.cern.ch -L 10080:remote.cern.ch:80 -N"
     # cat ~/.ssh/id_dsa.pub | ssh user@remote.com 'cat >> ~/.ssh/authorized_keys'
-    hostnames=(cern cepc ihep ihep7 lepp pixel emc)
+    hostnames=(cern xteam ihep ihep7 lepp pixel emc)
     
  
     export cern=xshi@lxplus.cern.ch
-    export cepc=shixin@cepcvtx.ihep.ac.cn
+    export xteam=shixin@xteam1.ihep.ac.cn
     export ihep=shixin@lxslc7.ihep.ac.cn
 
     export pixel=shixin@192.168.28.247 

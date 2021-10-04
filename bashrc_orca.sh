@@ -38,7 +38,7 @@ alias p="pwd"
 alias rl="root -l" 
 alias rm~="rm *~"
 alias cdoutlook="cd /Users/xshi/Library/Group\ Containers/UBF8T346G9.Office/Outlook/Outlook\ 15\ Profiles/Main\ Profile/Data/Message\ Attachments"
-#alias sr="ssh -R 52698:127.0.0.1:52698" 
+alias sr="ssh -R 52699:localhost:52698"  
 alias sd="ssh -D 9999 xshi@lxplus.cern.ch"
 alias si="ssh -D 9999 shixin@lxslc7.ihep.ac.cn"
 alias jk="bundle exec jekyll serve"
@@ -59,7 +59,7 @@ bak(){
        echo "IHEPBox(i) Ocean(o) Ocean2(o2) Ocean3(o3)?"
 
    elif [ "$1" = "i" ]; then
-       rsync -avuE -P $HOME/Documents $HOME/IHEPBox
+       rsync -avuE --exclude-from=$HOME/.sys/exclude.list -P $HOME/Documents $HOME/IHEPBox
 
    elif [ "$1" = "o" ]; then
        rsync -avuE -P $HOME/Documents /Volumes/Ocean/Documents

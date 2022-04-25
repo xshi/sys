@@ -75,7 +75,8 @@ sl() {
         for hostname in ${hostnames[*]}
 	do
 	    subst="$hostname"
-            echo "    ["$hostname"]" ${!subst}
+            # echo "    ["$hostname"]" ${!subst}
+            echo "    ["$hostname"]" ${(P)subst}  #zsh 
 	done
    	read menu 
     else
@@ -87,17 +88,9 @@ sl() {
 	subst="$hostname"
 	if [[ $menu == $hostname ]];
 	then
-	    echo "Logging into" ${!subst} "..." 
-        case $menu in 
-
-        cepc) echo "Using port 52699 for remote edit."
-        ssh -Y -R 52699:127.0.0.1:52698 ${!subst} 
-        ;;
-
-        * ) 
-	    ssh -Y ${!subst} 
-        ;; 
-        esac 
+	    # echo "Logging into" ${!subst} "..." 
+	    echo "Logging into" ${(P)subst} "..." 
+	    ssh -Y ${(P)subst} 
 	fi 
     done
 }

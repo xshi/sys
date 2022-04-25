@@ -15,7 +15,6 @@ fi
 #export LANG=en_US
 #export LC_CTYPE="utf-8"
 
-
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export CVSEDITOR=vim
@@ -43,39 +42,29 @@ alias si="ssh -D 9999 shixin@lxslc7.ihep.ac.cn"
 
 bak(){
    if [ -z "$1" ]; then
-       echo "IHEPBox(i) Ocean(o) Ocean2(o2) Ocean3(o3)?"
-
-   elif [ "$1" = "i" ]; then
-        echo "No more use..."
-       #rsync -avuE --exclude-from=$HOME/.sys/exclude.list -P $HOME/Documents $HOME/IHEPBox
+       echo "Ocean(o) Ocean3(o3)?"
 
    elif [ "$1" = "o" ]; then
        rsync -avuE -P $HOME/Documents /Volumes/Ocean/Documents
        rsync -avuE -P $HOME/Pictures /Volumes/Ocean/Pictures
        rsync -avuE -P $HOME/Movies /Volumes/Ocean/Movies
 
-   elif [ "$1" = "o2" ]; then
-       rsync -avuE -P /Volumes/Ocean/ /Volumes/Ocean2/
-
    elif [ "$1" = "o3" ]; then
        rsync -avuE -P $HOME/Documents /Volumes/Ocean3/Documents
        rsync -avuE -P $HOME/Pictures /Volumes/Ocean3/Pictures
-       rsync -avuE -P /Volumes/Ocean/Pictures/Photos\ Library.photoslibrary /Volumes/Ocean3/Pictures/Photos\ Library.photoslibrary
        rsync -avuE -P $HOME/Movies /Volumes/Ocean3/Movies
-
    fi;
 }
 
+
 sl() {
     hostnames=(cern ihep)
- 
     export cern=xshi@lxplus.cern.ch
     export ihep=shixin@lxslc7.ihep.ac.cn
     if [ -z "$1" ]; then
         for hostname in ${hostnames[*]}
 	do
 	    subst="$hostname"
-            # echo "    ["$hostname"]" ${!subst}
             echo "    ["$hostname"]" ${(P)subst}  #zsh 
 	done
    	read menu 
@@ -88,7 +77,6 @@ sl() {
 	subst="$hostname"
 	if [[ $menu == $hostname ]];
 	then
-	    # echo "Logging into" ${!subst} "..." 
 	    echo "Logging into" ${(P)subst} "..." 
 	    ssh -Y ${(P)subst} 
 	fi 

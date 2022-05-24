@@ -35,6 +35,8 @@ alias p="pwd"
 alias rm~="rm *~"
 alias sd="ssh -D 9999 xshi@lxplus.cern.ch"
 alias si="ssh -D 9999 shixin@lxslc7.ihep.ac.cn"
+alias sk="networksetup -setsocksfirewallproxystate Wi-Fi"
+
 
 #--------------------------------------------------
 # Functions 

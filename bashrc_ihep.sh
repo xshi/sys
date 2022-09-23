@@ -28,7 +28,8 @@ alias qs="qstat -u shixin"
 #--------------------------------------------------
 export CVS_RSH=ssh
 export CVSEDITOR=vim
-export PATH=$HOME/local/bin:$PATH
+export PATH=$HOME/local/bin:$PATH 
+export SINGULARITY_CACHEDIR=$HOME/.singularity 
 unset SSH_ASKPASS  
 
 #--------------------------------------------------
@@ -43,6 +44,7 @@ setpyroot() {
     echo "Setting up python 2.7.11 and ROOT 5.34..."
     export PYTHONPATH=$HOME/local/lib
     export LD_LIBRARY_PATH=$HOME/local/lib
+    export PATH=$HOME/local/root/bin:$PATH
     source $HOME/local/root/bin/thisroot.sh 
 }
 

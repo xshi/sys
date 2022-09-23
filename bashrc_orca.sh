@@ -12,11 +12,19 @@ fi
 #--------------------------------------------------
 # General ENV
 #--------------------------------------------------
+#export LANG=en_US
+#export LC_CTYPE="utf-8"
+
+
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export CVSEDITOR=vim
 export PATH=$HOME/local/bin:$PATH
-#export PATH=/opt/local/bin:/opt/local/sbin:/Applications/CMake.app/Contents/bin:$PATH #for MacPorts 
+export PATH=/Applications/CMake.app/Contents/bin:$PATH
+# For MacPort: 
+export PATH=/opt/local/bin:$PATH
+# Ruby 
+export PATH=/usr/local/opt/ruby/bin:$PATH
 
 
 #--------------------------------------------------
@@ -25,16 +33,22 @@ export PATH=$HOME/local/bin:$PATH
 alias l="ls"
 alias ll="l -lh"
 alias lsd="l -d */"
-alias en="emacs -nw"
-alias ec="emacsclient"
+
 alias p="pwd"
 alias rl="root -l" 
 alias rm~="rm *~"
 alias cdoutlook="cd /Users/xshi/Library/Group\ Containers/UBF8T346G9.Office/Outlook/Outlook\ 15\ Profiles/Main\ Profile/Data/Message\ Attachments"
-alias sr="ssh -R 52698:127.0.0.1:52698" 
+alias sr="ssh -R 52699:localhost:52698"  
+alias sd="ssh -D 9999 xshi@lxplus.cern.ch"
+alias si="ssh -D 9999 shixin@lxslc7.ihep.ac.cn"
+alias jk="bundle exec jekyll serve"
+alias dk_tracs="docker run --interactive --rm --tty  --volume $HOME:/data  --name=tracs rd50/tracs bash"
 
 #. ~/local/share/root/bin/thisroot.sh
-. ~/local/share/root-6.10.06/build/bin/thisroot.sh 
+#. ~/local/share/root_v6.16.00/bin/thisroot.sh 
+#. /Applications/root_v6.20.04/bin/thisroot.sh 
+
+. ~/local/share/root6-build/bin/thisroot.sh 
 
 #--------------------------------------------------
 # Functions 
@@ -42,7 +56,11 @@ alias sr="ssh -R 52698:127.0.0.1:52698"
 
 bak(){
    if [ -z "$1" ]; then
-       echo "Ocean(o) Ocean2(o2) Ocean3(o3)?"
+       echo "IHEPBox(i) Ocean(o) Ocean2(o2) Ocean3(o3)?"
+
+   elif [ "$1" = "i" ]; then
+        echo "No more use..."
+       #rsync -avuE --exclude-from=$HOME/.sys/exclude.list -P $HOME/Documents $HOME/IHEPBox
 
    elif [ "$1" = "o" ]; then
        rsync -avuE -P $HOME/Documents /Volumes/Ocean/Documents
@@ -118,13 +136,12 @@ setsys() {
 sl() {
     # echo "[tn]      ssh xshi@lxplus5.cern.ch -L 10080:remote.cern.ch:80 -N"
     # cat ~/.ssh/id_dsa.pub | ssh user@remote.com 'cat >> ~/.ssh/authorized_keys'
-    hostnames=(cern cepc ihep ihep5 lepp pixel emc)
+    hostnames=(cern xteam ihep ihep7 lepp pixel emc)
     
  
     export cern=xshi@lxplus.cern.ch
-    export cepc=shixin@cepcvtx.ihep.ac.cn
-    export ihep=shixin@lxslc6.ihep.ac.cn
-    export ihep5=shixin@lxslc5.ihep.ac.cn
+    export xteam=shixin@xteam1.ihep.ac.cn
+    export ihep=shixin@lxslc7.ihep.ac.cn
 
     export pixel=shixin@192.168.28.247 
     export emc=shixin@192.168.28.246 
@@ -149,7 +166,16 @@ sl() {
 	if [[ $menu == $hostname ]];
 	then
 	    echo "Logging into" ${!subst} "..." 
-	    ssh -Y ${!subst}
+        case $menu in 
+
+        cepc) echo "Using port 52699 for remote edit."
+        ssh -Y -R 52699:127.0.0.1:52698 ${!subst} 
+        ;;
+
+        * ) 
+	    ssh -Y ${!subst} 
+        ;; 
+        esac 
 	fi 
     done
 }
@@ -161,6 +187,4 @@ function tabname {
 function winname {
   printf "\e]2;$1\a"
 }
-
-
 

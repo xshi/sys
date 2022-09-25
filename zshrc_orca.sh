@@ -23,6 +23,8 @@ export PATH=$HOME/local/bin:$PATH
 export PATH=/opt/local/bin:$PATH
 # Ruby 
 export PATH=/usr/local/opt/ruby/bin:$PATH
+# Python 
+export PATH=$HOME/Library/Python/3.9/bin:$PATH 
 
 #--------------------------------------------------
 # General Aliases

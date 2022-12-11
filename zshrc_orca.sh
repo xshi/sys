@@ -39,6 +39,8 @@ alias sd="ssh -D 9999 xshi@lxplus.cern.ch"
 alias si="ssh -D 9999 shixin@lxslc7.ihep.ac.cn"
 alias sk="networksetup -setsocksfirewallproxystate Wi-Fi"
 alias jk="bundle exec jekyll serve" 
+alias mk="mkdocs serve" 
+
 
 #--------------------------------------------------
 # Functions 
